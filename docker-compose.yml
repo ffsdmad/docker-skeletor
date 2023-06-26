@@ -1,0 +1,53 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        APP: ${APP:-csvt3}
+        UID: ${APP_UID}
+        GID: ${APP_GID}
+        USER: ${APP_USER}
+        HOME: ${APP_HOME}
+    command: poetry run gunicorn --config gunicorn.conf.py --reload-extra-file $APP_HOME/$APP/reload --chdir $APP  $APP.wsgi:application --log-level=DEBUG
+    # ~ command: bash startup-project.sh
+
+    volumes:
+      - ./:${APP_HOME}/
+      # ~ - ./${APP}:${APP_HOME}/${APP}
+      # ~ - ./static:${APP_HOME}/static/
+      # ~ - ./media:${APP_HOME}/media/
+    # ~ ports:
+      # ~ - ${PORT}:${PORT}
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  db:
+    container_name: ${APP}-db
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - UID=1002
+
+  nginx:
+    build:
+      context: ./nginx
+      args:
+        PORT: ${PORT}
+    volumes:
+      - ./static:/static/
+      - ./media:/media/
+    ports:
+    - ${PORT}:80
+    depends_on:
+    - web
+    env_file:
+      - .env
+
+volumes:
+  postgres_data:

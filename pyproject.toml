@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "persiru"
+version = "0.1.0"
+description = ""
+authors = ["Басманов Илья <ffsdmad@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "4.2.1"
+django-phonenumber-field = "^7.1.0"
+phonenumbers = "^8.13.13"
+pillow = "^9.5.0"
+django-parler = "^2.3"
+django-mptt = "^0.14.0"
+django-jsoneditor = "^0.2.4"
+django-filter = "^23.2"
+graphene-django = "^3.1.1"
+gunicorn = "^20.1.0"
+django-environ = "^0.10.0"
+bpython = "^0.24"
+psycopg2-binary = "^2.9.6"
+
+
+[build-system]
+requires = [
+    "poetry-core",
+]
+build-backend = "poetry.core.masonry.api"
+
