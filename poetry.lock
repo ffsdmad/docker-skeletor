@@ -258,6 +258,21 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-ckeditor"
+version = "6.6.1"
+description = "Django admin CKEditor integration."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django-ckeditor-6.6.1.tar.gz", hash = "sha256:a804a98137058c00fc092aafc475e9491b2ca7c68c84d6ca12c4fa2453696017"},
+    {file = "django_ckeditor-6.6.1-py3-none-any.whl", hash = "sha256:44894c2a1050f58edcab6f9e631dbb63fa5532e7432a5650cfd878b6f33b0d46"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+django-js-asset = ">=2.0"
+
+[[package]]
 name = "django-environ"
 version = "0.10.0"
 description = "A package that allows you to utilize 12factor inspired environment variables to configure your Django application."
@@ -319,6 +334,17 @@ files = [
 packaging = "*"
 
 [[package]]
+name = "django-jsoneditor-widget"
+version = "1.3.2"
+description = "Django form widget form JSONField"
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-jsoneditor-widget-1.3.2.tar.gz", hash = "sha256:0271a171a4cd9cd2e798eb1dd4845b726b67586952310ac92fc7d12056e0e187"},
+    {file = "django_jsoneditor_widget-1.3.2-py3-none-any.whl", hash = "sha256:919d81a6291e46e8209f358d896eee2b23248694a390d0325a10ee369b2f4448"},
+]
+
+[[package]]
 name = "django-mptt"
 version = "0.14.0"
 description = "Utilities for implementing Modified Preorder Tree Traversal with your Django Models and working with trees of Model instances."
@@ -334,6 +360,20 @@ django-js-asset = "*"
 
 [package.extras]
 tests = ["coverage", "mock-django"]
+
+[[package]]
+name = "django-multiselectfield"
+version = "0.1.12"
+description = "Django multiple select field"
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-multiselectfield-0.1.12.tar.gz", hash = "sha256:d0a4c71568fb2332c71478ffac9f8708e01314a35cf923dfd7a191343452f9f9"},
+    {file = "django_multiselectfield-0.1.12-py3-none-any.whl", hash = "sha256:c270faa7f80588214c55f2d68cbddb2add525c2aa830c216b8a198de914eb470"},
+]
+
+[package.dependencies]
+django = ">=1.4"
 
 [[package]]
 name = "django-parler"
@@ -366,6 +406,22 @@ Django = ">=3.2"
 [package.extras]
 phonenumbers = ["phonenumbers (>=7.0.2)"]
 phonenumberslite = ["phonenumberslite (>=7.0.2)"]
+
+[[package]]
+name = "django-rosetta"
+version = "0.9.9"
+description = "A Django application that eases the translation of Django projects"
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-rosetta-0.9.9.tar.gz", hash = "sha256:776ac03f43974ea780ca25e7d805862b06c8ede4698f999c771a5ed78da4b87f"},
+    {file = "django_rosetta-0.9.9-py3-none-any.whl", hash = "sha256:269d9ce7e9972002ac216e7bca33b4d9f578bd38b6043d98e28c9b69c04c1f59"},
+]
+
+[package.dependencies]
+Django = ">=2.2"
+polib = ">=1.1.0"
+requests = ">=2.1.0"
 
 [[package]]
 name = "graphene"
@@ -656,6 +712,17 @@ docs = ["furo", "olefile", "sphinx (>=2.4)", "sphinx-copybutton", "sphinx-inline
 tests = ["check-manifest", "coverage", "defusedxml", "markdown2", "olefile", "packaging", "pyroma", "pytest", "pytest-cov", "pytest-timeout"]
 
 [[package]]
+name = "polib"
+version = "1.2.0"
+description = "A library to manipulate gettext files (po and mo files)."
+optional = false
+python-versions = "*"
+files = [
+    {file = "polib-1.2.0-py2.py3-none-any.whl", hash = "sha256:1c77ee1b81feb31df9bca258cbc58db1bbb32d10214b173882452c73af06d62d"},
+    {file = "polib-1.2.0.tar.gz", hash = "sha256:f3ef94aefed6e183e342a8a269ae1fc4742ba193186ad76f175938621dbfc26b"},
+]
+
+[[package]]
 name = "promise"
 version = "2.3"
 description = "Promises/A+ implementation for Python"
@@ -895,4 +962,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "56bddcc37e943524b5381a5603a48366742da0d50a4ac2edd602bd0b4380a605"
+content-hash = "87c8d84db5f93535e86f9afd778d125a06a5481fd99f88d950185472ddce7f6b"

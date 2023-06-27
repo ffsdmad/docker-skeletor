@@ -10,7 +10,8 @@ services:
         GID: ${APP_GID}
         USER: ${APP_USER}
         HOME: ${APP_HOME}
-    command: poetry run gunicorn --config gunicorn.conf.py --reload-extra-file $APP_HOME/$APP/reload --chdir $APP  $APP.wsgi:application --log-level=DEBUG
+    #command: poetry run gunicorn --config gunicorn.conf.py --reload-extra-file $APP_HOME/$APP/reload --chdir $APP  $APP.wsgi:application --log-level=DEBUG
+    command: poetry run $APP/manage.py runserver 0.0.0.0:${PORT}
     # ~ command: bash startup-project.sh
 
     volumes:
