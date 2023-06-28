@@ -18,7 +18,7 @@ class Specifications(TranslatableModel):
     key = models.CharField(_("Key"), max_length=40, blank=True)
     component = models.CharField(_("Component"), max_length=40, blank=True)
 
-    comment = models.CharField(_("Cmment"), max_length=100, blank=True)
+    comment = models.CharField(_("Comment"), max_length=100, blank=True)
 
     order_num = models.IntegerField(_("Order num"), null=True, blank=True)
 

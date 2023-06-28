@@ -176,6 +176,14 @@ PARLER_LANGUAGES = {
         {'code': 'en',},
         {'code': 'ru',},
     ),
+    1: (
+        {'code': 'en',},
+        {'code': 'ru',},
+    ),
+    2: (
+        {'code': 'en',},
+        {'code': 'ru',},
+    ),
     'default': {
         'fallbacks': ['ru'],          # defaults to PARLER_DEFAULT_LANGUAGE_CODE
         'hide_untranslated': False,   # the default; let .active_translations() return fallbacks too.

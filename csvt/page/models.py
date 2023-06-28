@@ -29,7 +29,7 @@ class Page(TranslatableModel):
         seo_description=models.CharField(max_length=900, blank=True),
     )
 
-    comment = models.CharField(max_length=150, blank=True)
+    comment = models.CharField(_("Comment"), max_length=100, blank=True)
 
     image = models.ImageField(null=True, blank=True, upload_to="images/")
 

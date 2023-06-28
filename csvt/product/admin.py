@@ -62,9 +62,6 @@ class ProductAdmin(TranslatableAdmin):
         JSONField: {
             "widget": JSONEditor()
         },
-        TranslatedFields: {
-            "widget": JSONEditor()
-        }
     }
 
     lighlight = ".required.translatable-field, .required.translatable-field + input"
@@ -131,29 +128,34 @@ class ProductAdmin(TranslatableAdmin):
 
 class SpecificationsAdmin(TranslatableAdmin):
 
-    list_display = (
-        "id", "key", "name", "label", "component", "order_num", "unit"
-    )
+    #  ~ list_display = (
+        #  ~ "id", "key", "name", "label", "component", "order_num", "unit"
+    #  ~ )
 
-    list_editable = (
-        "key", "order_num", "component"
-    )
+    #  ~ list_editable = (
+        #  ~ "key", "order_num", "component"
+    #  ~ )
 
-    fieldsets = (
-        (
-            None, {
-                "fields": (
-                    "key",
-                    "name",
-                    "label",
-                    "order_num",
-                    "component",
-                    "unit",
-                )
-            }
-        ),
-    )
+    #  ~ fieldsets = (
+        #  ~ (
+            #  ~ None, {
+                #  ~ "fields": (
+                    #  ~ "key",
+                    #  ~ "name",
+                    #  ~ "label",
+                    #  ~ "order_num",
+                    #  ~ "component",
+                    #  ~ "comment",
+                    #  ~ "unit",
+                #  ~ )
+            #  ~ }
+        #  ~ ),
+    #  ~ )
 
+    class Media:
+        css = {
+             'all': ('admin/parlet-form.css',)
+        }
 
 admin.site.register(Specifications, SpecificationsAdmin)
 admin.site.register(Product, ProductAdmin)
