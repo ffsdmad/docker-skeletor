@@ -19,7 +19,9 @@ class LayerInline(admin.TabularInline):
 class ProductLayerInline(admin.TabularInline):
     model = ProductLayer
     fk_name = "parent"
+    fileds = ("id", "title")
     raw_id_fields = ("group", "product")
+    extra = 0
 
 
 class PageAdmin(TranslatableAdmin):
@@ -38,6 +40,11 @@ class PageAdmin(TranslatableAdmin):
     )
 
     list_display = ["slug", "name", "title", "image_tag"]
+
+    class Media:
+        css = {
+             'all': ('admin/parlet-form.css',)
+        }
 
     fieldsets = (
         (

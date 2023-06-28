@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-27 18:17+0300\n"
-"PO-Revision-Date: 2023-06-27 18:17+0300\n"
+"POT-Creation-Date: 2023-06-28 08:54+0300\n"
+"PO-Revision-Date: 2023-06-28 08:54+0300\n"
 "Last-Translator:   <ffsdmad@yandex.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -27,7 +27,9 @@ msgstr "Английский"
 msgid "Русский"
 msgstr "Русский"
 
-#: csvt/menu/models.py:22 csvt/page/models.py:54 csvt/product/models.py:95
+#: csvt/menu/models.py:22 csvt/page/models.py:54 csvt/page/models.py:116
+#: csvt/page/models.py:169 csvt/product/models.py:95
+#: csvt/product/models.py:151
 msgid "Published"
 msgstr "Опубликовано"
 
@@ -55,11 +57,11 @@ msgstr "СЕО блок"
 msgid "Content"
 msgstr "Контент"
 
-#: csvt/page/admin.py:71 csvt/product/admin.py:106
+#: csvt/page/admin.py:71 csvt/product/admin.py:107
 msgid "Images"
 msgstr "Изображение"
 
-#: csvt/page/admin.py:81 csvt/page/models.py:61 csvt/product/admin.py:100
+#: csvt/page/admin.py:80 csvt/page/models.py:61 csvt/product/admin.py:100
 msgid "Attributes"
 msgstr "Атрибуты"
 
@@ -233,6 +235,10 @@ msgstr "Продукт"
 #: csvt/product/models.py:131
 msgid "Products"
 msgstr "Продукты"
+
+#: csvt/product/models.py:149
+msgid "Value"
+msgstr "Значение"
 
 #: csvt/product/models.py:156
 msgid "Product feature"

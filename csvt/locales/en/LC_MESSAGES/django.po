@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-27 18:17+0300\n"
+"POT-Creation-Date: 2023-06-28 08:54+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,8 @@ msgstr ""
 msgid "Русский"
 msgstr ""
 
-#: csvt/menu/models.py:22 csvt/page/models.py:54 csvt/product/models.py:95
+#: csvt/menu/models.py:22 csvt/page/models.py:54 csvt/page/models.py:116
+#: csvt/page/models.py:169 csvt/product/models.py:95 csvt/product/models.py:151
 msgid "Published"
 msgstr ""
 
@@ -54,11 +55,11 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: csvt/page/admin.py:71 csvt/product/admin.py:106
+#: csvt/page/admin.py:71 csvt/product/admin.py:107
 msgid "Images"
 msgstr ""
 
-#: csvt/page/admin.py:81 csvt/page/models.py:61 csvt/product/admin.py:100
+#: csvt/page/admin.py:80 csvt/page/models.py:61 csvt/product/admin.py:100
 msgid "Attributes"
 msgstr ""
 
@@ -225,6 +226,10 @@ msgstr ""
 
 #: csvt/product/models.py:131
 msgid "Products"
+msgstr ""
+
+#: csvt/product/models.py:149
+msgid "Value"
 msgstr ""
 
 #: csvt/product/models.py:156

@@ -1,6 +1,10 @@
-MENU_CLASSES = ()
-ICON_CLASSES = ()
-LAYER_CLASSES = ()
+MENU_CLASSES = enumerate(('top', 'footer',))
+
+ICON_CLASSES = enumerate(('top', 'footer',))
+
+LAYER_CLASSES = (
+
+)
 
 
 SUBPRODUCT_TYPES = (
@@ -25,4 +29,11 @@ PRODUCT_FLAGS = (
     ("show_category_color", "показывать цвет в карточке продукта"),
     ("is_main_sub", "is_main_sub"),
     ("is_dependent", "is_dependent"),
+)
+
+
+MANAGER_PRICES = (
+    (0, '0'),
+    (1, '1'),
+    (2, '2'),
 )

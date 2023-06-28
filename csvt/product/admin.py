@@ -5,7 +5,7 @@ from django.forms.models import BaseInlineFormSet
 
 from jsoneditor.forms import JSONEditor
 
-
+from parler.models import TranslatableModel, TranslatedFields
 from parler.admin import TranslatableAdmin, TranslatableInlineModelAdmin
 
 from .models import Product
@@ -61,8 +61,13 @@ class ProductAdmin(TranslatableAdmin):
     formfield_overrides = {
         JSONField: {
             "widget": JSONEditor()
+        },
+        TranslatedFields: {
+            "widget": JSONEditor()
         }
     }
+
+    lighlight = ".required.translatable-field, .required.translatable-field + input"
 
     search_fields = (
         "slug",
@@ -112,6 +117,17 @@ class ProductAdmin(TranslatableAdmin):
         ),
     )
 
+    #  ~ def get_form(self, request, obj=None, **kwargs):
+        #  ~ form = super().get_form(request, obj, **kwargs)
+        #  ~ for ft in self.model._parler_meta.get_translated_fields():
+            #  ~ form.base_fields[ft].widget.attrs['style'] = 'background-color: #ffffc7'
+            #  ~ form.base_fields[ft].widget.attrs['class'] = 'XXXXX'
+        #  ~ return form
+
+    class Media:
+        css = {
+             'all': ('admin/parlet-form.css',)
+        }
 
 class SpecificationsAdmin(TranslatableAdmin):
 
@@ -140,6 +156,4 @@ class SpecificationsAdmin(TranslatableAdmin):
 
 
 admin.site.register(Specifications, SpecificationsAdmin)
-
 admin.site.register(Product, ProductAdmin)
-

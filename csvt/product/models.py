@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 from parler.models import TranslatableModel, TranslatedFields
 
-from constants import SUBPRODUCT_TYPES
+from constants import (SUBPRODUCT_TYPES, MANAGER_PRICES)
 
 
 class Specifications(TranslatableModel):
@@ -98,7 +98,9 @@ class Product(TranslatableModel):
     is_new = models.BooleanField(_("New product"), default=False)
 
     manager_price = models.IntegerField(
-        _("Manager price"), blank=True, null=True
+        _("Manager price"),
+        choices=MANAGER_PRICES,
+        blank=True, null=True, default=0
     )
 
     attributes = JSONField(default=dict, null=True, blank=True)
@@ -146,9 +148,9 @@ class Product(TranslatableModel):
 class ProductSpecifications(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     specification = models.ForeignKey(Specifications, on_delete=models.CASCADE)
-    value = models.CharField(max_length=100)
+    value = models.CharField(_("Value"), max_length=100)
 
-    is_public = models.BooleanField(default=True)
+    is_public = models.BooleanField(_("Published"), default=True)
 
     order_num = models.IntegerField(_("Order num"), null=True, blank=True)
 

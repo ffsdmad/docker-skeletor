@@ -147,6 +147,8 @@ CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS")
 
 INSTALLED_APPS = [
     *INSTALLED_APPS,
+
+    "django.contrib.sites",
     # extend
     "mptt",
     "parler",
@@ -155,8 +157,10 @@ INSTALLED_APPS = [
     "jsoneditor",
     # csvt
     "csvt",
+    "menu",
     "page",
     "product",
+    "siteconf",
 ]
 
 # Языковые настройки
@@ -173,7 +177,7 @@ PARLER_LANGUAGES = {
         {'code': 'ru',},
     ),
     'default': {
-        'fallbacks': ['en'],          # defaults to PARLER_DEFAULT_LANGUAGE_CODE
+        'fallbacks': ['ru'],          # defaults to PARLER_DEFAULT_LANGUAGE_CODE
         'hide_untranslated': False,   # the default; let .active_translations() return fallbacks too.
     }
 }
@@ -204,3 +208,6 @@ LOCALE_PATHS = [BASE_DIR / "locales"]
 # JSON_EDITOR
 JSON_EDITOR_JS = '/static/jsoneditor/jsoneditor.js'
 JSON_EDITOR_CSS = '/static/jsoneditor/jsoneditor.css'
+
+
+SITE_ID = 1

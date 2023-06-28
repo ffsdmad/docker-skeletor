@@ -113,7 +113,7 @@ class Layer(TranslatableModel):
         null=True, blank=True
     )
 
-    is_public = models.BooleanField(default=True)
+    is_public = models.BooleanField(_("Published"), default=True)
 
     order_num = models.IntegerField(
         _("Order num"), null=True, blank=True
@@ -166,7 +166,7 @@ class ProductLayer(TranslatableModel):
         null=True, blank=True
     )
 
-    is_public = models.BooleanField(default=True)
+    is_public = models.BooleanField(_("Published"), default=True)
 
     order_num = models.IntegerField(
         _("Order num"), null=True, blank=True
@@ -205,3 +205,6 @@ class ProductLayer(TranslatableModel):
     class Meta:
         verbose_name = _("Product layer")
         verbose_name_plural = _("Product layers")
+
+    def __str__(self):
+        return f"{self.id} "
