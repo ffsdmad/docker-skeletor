@@ -71,6 +71,8 @@ class ProductAdmin(TranslatableAdmin):
         "translations__name",
     )
 
+    list_filter = ("is_public", "manager_price")
+
     list_display = ["slug", "name", "image_tag"]
 
     fieldsets = (
@@ -128,29 +130,29 @@ class ProductAdmin(TranslatableAdmin):
 
 class SpecificationsAdmin(TranslatableAdmin):
 
-    #  ~ list_display = (
-        #  ~ "id", "key", "name", "label", "component", "order_num", "unit"
-    #  ~ )
+    list_display = (
+        "id", "key", "name", "label", "component", "order_num", "unit"
+    )
 
-    #  ~ list_editable = (
-        #  ~ "key", "order_num", "component"
-    #  ~ )
+    list_editable = (
+        "key", "order_num", "component"
+    )
 
-    #  ~ fieldsets = (
-        #  ~ (
-            #  ~ None, {
-                #  ~ "fields": (
-                    #  ~ "key",
-                    #  ~ "name",
-                    #  ~ "label",
-                    #  ~ "order_num",
-                    #  ~ "component",
-                    #  ~ "comment",
-                    #  ~ "unit",
-                #  ~ )
-            #  ~ }
-        #  ~ ),
-    #  ~ )
+    fieldsets = (
+        (
+            None, {
+                "fields": (
+                    "key",
+                    "name",
+                    "label",
+                    "order_num",
+                    "component",
+                    "comment",
+                    "unit",
+                )
+            }
+        ),
+    )
 
     class Media:
         css = {

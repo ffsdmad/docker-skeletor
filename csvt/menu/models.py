@@ -34,7 +34,7 @@ class Menu(MPTTModel, TranslatableModel):
 
     page = models.ForeignKey(
         "page.Page",
-        on_delete=models.CASCADE,
+        on_delete=models.DO_NOTHING,
         related_name="menu",
         blank=True,
         null=True,

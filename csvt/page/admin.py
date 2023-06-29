@@ -10,6 +10,13 @@ from parler.admin import TranslatableAdmin
 from .models import Page, Layer, ProductLayer
 
 
+class PageProduct(Page):
+    class Meta:
+        proxy = True
+        verbose_name = _("Продуктовая страница")
+        verbose_name_plural = _("Продуктовые cтраницы")
+
+
 class LayerInline(admin.TabularInline):
     model = Layer
     fk_name = "parent"
@@ -23,9 +30,20 @@ class ProductLayerInline(admin.TabularInline):
     raw_id_fields = ("group", "product")
     extra = 0
 
+@admin.action(description=_("Enable user"))
+def make_published(modeladmin, request, queryset):
+    queryset.update(is_public=True)
+
+
+@admin.action(description=_("Disable user"))
+def make_disabled(modeladmin, request, queryset):
+    queryset.update(is_public=False)
+
 
 class PageAdmin(TranslatableAdmin):
-    inlines = (LayerInline, ProductLayerInline)
+    inlines = (LayerInline, )
+
+    actions = (make_published, make_disabled)
 
     formfield_overrides = {
         JSONField: {
@@ -33,18 +51,15 @@ class PageAdmin(TranslatableAdmin):
         }
     }
 
+    list_filter = ("is_public", "is_test", "is_preview")
+
     search_fields = (
         "slug",
         "translations__name",
         "translations__title",
     )
 
-    list_display = ["slug", "name", "title", "image_tag"]
-
-    class Media:
-        css = {
-             'all': ('admin/parlet-form.css',)
-        }
+    list_display = ("slug", "name", "title", "image_tag")
 
     fieldsets = (
         (
@@ -69,8 +84,10 @@ class PageAdmin(TranslatableAdmin):
         (
             _("Content"), {
                 "fields": (
-                    ("title", ),
+                    ("title", "short_content"),
                     ("content", ),
+                    ("content_mobile", ),
+                    ("external_video", ),
                 )
             }
         ),
@@ -91,5 +108,15 @@ class PageAdmin(TranslatableAdmin):
         ),
     )
 
+    class Media:
+        css = {
+             'all': ('admin/parlet-form.css',)
+        }
+
+
+class PageProductAdmin(PageAdmin):
+    inlines = (ProductLayerInline, )
+
 
 admin.site.register(Page, PageAdmin)
+#  ~ admin.site.register(PageProduct, PageProductAdmin)

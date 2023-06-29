@@ -8,28 +8,101 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 17:42+0300\n"
-"PO-Revision-Date: 2023-06-28 17:44+0300\n"
-"Last-Translator:   <ffsdmad@yandex.ru>\n"
+"POT-Creation-Date: 2023-06-29 16:18+0300\n"
+"PO-Revision-Date: 2023-06-29 16:14+0300\n"
+"Last-Translator: Илья Басманов <ffsdmad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 "X-Translated-Using: django-rosetta 0.9.9\n"
 
-#: csvt/csvt/settings.py:168
+#: csvt/csvt/settings.py:169
 msgid "English"
 msgstr "Английский"
 
-#: csvt/csvt/settings.py:169
+#: csvt/csvt/settings.py:170
 msgid "Русский"
 msgstr "Русский"
 
-#: csvt/menu/models.py:30 csvt/page/models.py:54 csvt/page/models.py:116
-#: csvt/page/models.py:169 csvt/product/models.py:95
-#: csvt/product/models.py:153 csvt/siteconf/models.py:16
+#: csvt/lk/admin.py:20 csvt/page/admin.py:33
+msgid "Enable user"
+msgstr "Включить пользователей"
+
+#: csvt/lk/admin.py:25 csvt/page/admin.py:38
+msgid "Disable user"
+msgstr "Отключить пользователей"
+
+#: csvt/lk/apps.py:8
+msgid "Accounts"
+msgstr "Пользователи"
+
+#: csvt/lk/models.py:15
+msgid "Phone"
+msgstr "Телефон"
+
+#: csvt/lk/models.py:18
+msgid "Add. phone"
+msgstr "Доп. телефон"
+
+#: csvt/lk/models.py:24
+msgid "Country"
+msgstr "Страна"
+
+#: csvt/lk/models.py:30
+msgid "City"
+msgstr "Город"
+
+#: csvt/lk/models.py:36
+#, fuzzy
+#| msgid "Addres"
+msgid "Address"
+msgstr "Адресс"
+
+#: csvt/lk/models.py:41
+msgid "User type"
+msgstr "Тип пользователя"
+
+#: csvt/lk/models.py:45
+msgid "Is block"
+msgstr "Заблокирован"
+
+#: csvt/lk/models.py:48
+msgid "Accepted rules"
+msgstr "Принял правила"
+
+#: csvt/lk/models.py:53 csvt/page/admin.py:102 csvt/page/models.py:77
+#: csvt/product/admin.py:104
+msgid "Attributes"
+msgstr "Атрибуты"
+
+#: csvt/lk/models.py:58
+msgid "Rating"
+msgstr "Рейтинг"
+
+#: csvt/lk/models.py:68
+msgid "1C id"
+msgstr "ID из 1С"
+
+#: csvt/lk/models.py:75
+msgid "User"
+msgstr "Пользователь"
+
+#: csvt/lk/models.py:76
+msgid "Users"
+msgstr "Пользователи"
+
+#: csvt/menu/apps.py:8 csvt/menu/models.py:69 csvt/menu/models.py:70
+msgid "Menu"
+msgstr "Меню"
+
+#: csvt/menu/models.py:30 csvt/page/models.py:70 csvt/page/models.py:132
+#: csvt/page/models.py:185 csvt/product/models.py:95 csvt/product/models.py:153
+#: csvt/siteconf/models.py:16
 msgid "Published"
 msgstr "Опубликовано"
 
@@ -37,105 +110,120 @@ msgstr "Опубликовано"
 msgid "Link"
 msgstr "Ссылка"
 
-#: csvt/menu/models.py:33 csvt/page/models.py:32 csvt/product/models.py:21
+#: csvt/menu/models.py:33 csvt/page/models.py:48 csvt/product/models.py:21
 msgid "Comment"
 msgstr "Комментарий"
 
-#: csvt/menu/models.py:44 csvt/page/models.py:130 csvt/page/models.py:183
+#: csvt/menu/models.py:44 csvt/page/models.py:146 csvt/page/models.py:199
 msgid "CSS Class"
 msgstr "CSS классы"
 
 #: csvt/menu/models.py:51
-#| msgid "CSS Class"
 msgid "Icon Class"
 msgstr "Классы иконок"
 
-#: csvt/menu/models.py:69 csvt/menu/models.py:70
-msgid "Menu"
-msgstr "Меню"
+#: csvt/page/admin.py:16
+#, fuzzy
+#| msgid "Оптовая цена"
+msgid "Продуктовая страница"
+msgstr "Оптовая цена"
 
-#: csvt/page/admin.py:51 csvt/product/admin.py:78
+#: csvt/page/admin.py:17
+msgid "Продуктовые cтраницы"
+msgstr ""
+
+#: csvt/page/admin.py:66 csvt/product/admin.py:80
 msgid "Main info"
 msgstr "Основная информция"
 
-#: csvt/page/admin.py:61
+#: csvt/page/admin.py:76
 msgid "SEO"
 msgstr "СЕО блок"
 
-#: csvt/page/admin.py:70
+#: csvt/page/admin.py:85 csvt/page/models.py:26
 msgid "Content"
 msgstr "Контент"
 
-#: csvt/page/admin.py:78 csvt/product/admin.py:109
+#: csvt/page/admin.py:93 csvt/product/admin.py:111
 msgid "Images"
 msgstr "Изображение"
 
-#: csvt/page/admin.py:87 csvt/page/models.py:61 csvt/product/admin.py:102
-msgid "Attributes"
-msgstr "Атрибуты"
-
-#: csvt/page/models.py:55
-msgid "Preview"
-msgstr "Предпросмотр"
-
-#: csvt/page/models.py:56
-msgid "Test"
-msgstr "Тест"
-
-#: csvt/page/models.py:66 csvt/siteconf/models.py:20
-msgid "Template name"
-msgstr "Шаблон"
-
-#: csvt/page/models.py:83 csvt/product/models.py:145
-msgid "Image"
-msgstr "Изображение"
-
-#: csvt/page/models.py:86
-msgid "Page"
-msgstr "Страница"
-
-#: csvt/page/models.py:87
+#: csvt/page/apps.py:8 csvt/page/models.py:103
 msgid "Pages"
 msgstr "Страницы"
 
-#: csvt/page/models.py:104 csvt/page/models.py:157
+#: csvt/page/models.py:30
+msgid "Mobile content"
+msgstr "Контент для мобильной версии"
+
+#: csvt/page/models.py:34
+msgid "Short content"
+msgstr "Контент"
+
+#: csvt/page/models.py:38
+msgid "External video"
+msgstr "Ссылка на внешнее видео"
+
+#: csvt/page/models.py:71
+msgid "Preview"
+msgstr "Предпросмотр"
+
+#: csvt/page/models.py:72
+msgid "Test"
+msgstr "Тест"
+
+#: csvt/page/models.py:82 csvt/siteconf/models.py:20
+msgid "Template name"
+msgstr "Шаблон"
+
+#: csvt/page/models.py:99 csvt/product/models.py:145
+msgid "Image"
+msgstr "Изображение"
+
+#: csvt/page/models.py:102
+msgid "Page"
+msgstr "Страница"
+
+#: csvt/page/models.py:120 csvt/page/models.py:173
 msgid "Group"
 msgstr "Группа"
 
-#: csvt/page/models.py:119 csvt/page/models.py:172 csvt/product/models.py:23
+#: csvt/page/models.py:135 csvt/page/models.py:188 csvt/product/models.py:23
 #: csvt/product/models.py:155
 msgid "Order num"
 msgstr "Сортировка"
 
-#: csvt/page/models.py:125 csvt/page/models.py:178
+#: csvt/page/models.py:141 csvt/page/models.py:194
 msgid "Language"
 msgstr "Язык"
 
-#: csvt/page/models.py:145
+#: csvt/page/models.py:161
 msgid "Layer"
 msgstr "Группировка"
 
-#: csvt/page/models.py:146
+#: csvt/page/models.py:162
 msgid "Layers"
 msgstr "Группировки"
 
-#: csvt/page/models.py:202
+#: csvt/page/models.py:218
 msgid "Complex count"
 msgstr "Количество комлексной цены"
 
-#: csvt/page/models.py:206
-#| msgid "Product"
+#: csvt/page/models.py:222
 msgid "Product layer"
 msgstr "Связь с продуктом"
 
-#: csvt/page/models.py:207
-#| msgid "Products"
+#: csvt/page/models.py:223
 msgid "Product layers"
 msgstr "Группировка продуктов"
 
-#: csvt/product/admin.py:92
+#: csvt/product/admin.py:94
 msgid "Price"
 msgstr "Цена"
+
+#: csvt/product/apps.py:8 csvt/product/models.py:133
+msgid "Products"
+msgstr "Продукты"
 
 #: csvt/product/models.py:13
 msgid "Name"
@@ -171,7 +259,7 @@ msgstr "Оптовый минимум"
 
 #: csvt/product/models.py:58
 msgid "price_tax"
-msgstr "налог"
+msgstr "Налог"
 
 #: csvt/product/models.py:71
 msgid "Remainder"
@@ -229,10 +317,6 @@ msgstr "Изображение"
 msgid "Product"
 msgstr "Продукт"
 
-#: csvt/product/models.py:133
-msgid "Products"
-msgstr "Продукты"
-
 #: csvt/product/models.py:151
 msgid "Value"
 msgstr "Значение"
@@ -242,9 +326,12 @@ msgid "Product feature"
 msgstr "Характеристика продукта"
 
 #: csvt/product/models.py:159
-#| msgid "Production"
 msgid "Product specifications"
 msgstr "Характеристики продукта"
+
+#: csvt/siteconf/apps.py:8
+msgid "Site settings"
+msgstr "Настройки сайта"
 
 #, fuzzy
 #~ msgid "Cmment"
@@ -252,9 +339,6 @@ msgstr "Характеристики продукта"
 
 #~ msgid "РУБ - НДС"
 #~ msgstr "Налог в рублях"
-
-#~ msgid "Оптовая цена"
-#~ msgstr "Оптовая цена"
 
 #~ msgid "Оптовый минимум"
 #~ msgstr "Оптовый минимум"

@@ -8,39 +8,109 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 17:42+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2023-06-29 16:18+0300\n"
+"PO-Revision-Date: 2023-06-29 09:02+0300\n"
+"Last-Translator:   <ffsdmad@yandex.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: csvt/csvt/settings.py:168
-msgid "English"
-msgstr ""
+"X-Translated-Using: django-rosetta 0.9.9\n"
 
 #: csvt/csvt/settings.py:169
+msgid "English"
+msgstr "English"
+
+#: csvt/csvt/settings.py:170
 msgid "Русский"
+msgstr "Russian"
+
+#: csvt/lk/admin.py:20 csvt/page/admin.py:33
+msgid "Enable user"
 msgstr ""
 
-#: csvt/menu/models.py:30 csvt/page/models.py:54 csvt/page/models.py:116
-#: csvt/page/models.py:169 csvt/product/models.py:95 csvt/product/models.py:153
+#: csvt/lk/admin.py:25 csvt/page/admin.py:38
+msgid "Disable user"
+msgstr ""
+
+#: csvt/lk/apps.py:8
+msgid "Accounts"
+msgstr ""
+
+#: csvt/lk/models.py:15
+msgid "Phone"
+msgstr ""
+
+#: csvt/lk/models.py:18
+msgid "Add. phone"
+msgstr ""
+
+#: csvt/lk/models.py:24
+msgid "Country"
+msgstr ""
+
+#: csvt/lk/models.py:30
+msgid "City"
+msgstr ""
+
+#: csvt/lk/models.py:36
+msgid "Address"
+msgstr ""
+
+#: csvt/lk/models.py:41
+msgid "User type"
+msgstr ""
+
+#: csvt/lk/models.py:45
+msgid "Is block"
+msgstr ""
+
+#: csvt/lk/models.py:48
+msgid "Accepted rules"
+msgstr ""
+
+#: csvt/lk/models.py:53 csvt/page/admin.py:102 csvt/page/models.py:77
+#: csvt/product/admin.py:104
+msgid "Attributes"
+msgstr ""
+
+#: csvt/lk/models.py:58
+msgid "Rating"
+msgstr ""
+
+#: csvt/lk/models.py:68
+msgid "1C id"
+msgstr ""
+
+#: csvt/lk/models.py:75
+msgid "User"
+msgstr ""
+
+#: csvt/lk/models.py:76
+msgid "Users"
+msgstr ""
+
+#: csvt/menu/apps.py:8 csvt/menu/models.py:69 csvt/menu/models.py:70
+msgid "Menu"
+msgstr ""
+
+#: csvt/menu/models.py:30 csvt/page/models.py:70 csvt/page/models.py:132
+#: csvt/page/models.py:185 csvt/product/models.py:95 csvt/product/models.py:153
 #: csvt/siteconf/models.py:16
 msgid "Published"
-msgstr ""
+msgstr "Published"
 
 #: csvt/menu/models.py:32
 msgid "Link"
-msgstr ""
+msgstr "Link"
 
-#: csvt/menu/models.py:33 csvt/page/models.py:32 csvt/product/models.py:21
+#: csvt/menu/models.py:33 csvt/page/models.py:48 csvt/product/models.py:21
 msgid "Comment"
-msgstr ""
+msgstr "Comment"
 
-#: csvt/menu/models.py:44 csvt/page/models.py:130 csvt/page/models.py:183
+#: csvt/menu/models.py:44 csvt/page/models.py:146 csvt/page/models.py:199
 msgid "CSS Class"
 msgstr ""
 
@@ -48,89 +118,105 @@ msgstr ""
 msgid "Icon Class"
 msgstr ""
 
-#: csvt/menu/models.py:69 csvt/menu/models.py:70
-msgid "Menu"
+#: csvt/page/admin.py:16
+msgid "Продуктовая страница"
 msgstr ""
 
-#: csvt/page/admin.py:51 csvt/product/admin.py:78
+#: csvt/page/admin.py:17
+msgid "Продуктовые cтраницы"
+msgstr ""
+
+#: csvt/page/admin.py:66 csvt/product/admin.py:80
 msgid "Main info"
 msgstr ""
 
-#: csvt/page/admin.py:61
+#: csvt/page/admin.py:76
 msgid "SEO"
 msgstr ""
 
-#: csvt/page/admin.py:70
+#: csvt/page/admin.py:85 csvt/page/models.py:26
 msgid "Content"
 msgstr ""
 
-#: csvt/page/admin.py:78 csvt/product/admin.py:109
+#: csvt/page/admin.py:93 csvt/product/admin.py:111
 msgid "Images"
 msgstr ""
 
-#: csvt/page/admin.py:87 csvt/page/models.py:61 csvt/product/admin.py:102
-msgid "Attributes"
-msgstr ""
-
-#: csvt/page/models.py:55
-msgid "Preview"
-msgstr ""
-
-#: csvt/page/models.py:56
-msgid "Test"
-msgstr ""
-
-#: csvt/page/models.py:66 csvt/siteconf/models.py:20
-msgid "Template name"
-msgstr ""
-
-#: csvt/page/models.py:83 csvt/product/models.py:145
-msgid "Image"
-msgstr ""
-
-#: csvt/page/models.py:86
-msgid "Page"
-msgstr ""
-
-#: csvt/page/models.py:87
+#: csvt/page/apps.py:8 csvt/page/models.py:103
 msgid "Pages"
 msgstr ""
 
-#: csvt/page/models.py:104 csvt/page/models.py:157
+#: csvt/page/models.py:30
+msgid "Mobile content"
+msgstr ""
+
+#: csvt/page/models.py:34
+msgid "Short content"
+msgstr ""
+
+#: csvt/page/models.py:38
+msgid "External video"
+msgstr ""
+
+#: csvt/page/models.py:71
+msgid "Preview"
+msgstr ""
+
+#: csvt/page/models.py:72
+msgid "Test"
+msgstr ""
+
+#: csvt/page/models.py:82 csvt/siteconf/models.py:20
+msgid "Template name"
+msgstr ""
+
+#: csvt/page/models.py:99 csvt/product/models.py:145
+msgid "Image"
+msgstr ""
+
+#: csvt/page/models.py:102
+msgid "Page"
+msgstr ""
+
+#: csvt/page/models.py:120 csvt/page/models.py:173
 msgid "Group"
 msgstr ""
 
-#: csvt/page/models.py:119 csvt/page/models.py:172 csvt/product/models.py:23
+#: csvt/page/models.py:135 csvt/page/models.py:188 csvt/product/models.py:23
 #: csvt/product/models.py:155
 msgid "Order num"
 msgstr ""
 
-#: csvt/page/models.py:125 csvt/page/models.py:178
+#: csvt/page/models.py:141 csvt/page/models.py:194
 msgid "Language"
 msgstr ""
 
-#: csvt/page/models.py:145
+#: csvt/page/models.py:161
 msgid "Layer"
 msgstr ""
 
-#: csvt/page/models.py:146
+#: csvt/page/models.py:162
 msgid "Layers"
 msgstr ""
 
-#: csvt/page/models.py:202
+#: csvt/page/models.py:218
 msgid "Complex count"
 msgstr ""
 
-#: csvt/page/models.py:206
+#: csvt/page/models.py:222
 msgid "Product layer"
 msgstr ""
 
-#: csvt/page/models.py:207
+#: csvt/page/models.py:223
 msgid "Product layers"
 msgstr ""
 
-#: csvt/product/admin.py:92
+#: csvt/product/admin.py:94
 msgid "Price"
+msgstr ""
+
+#: csvt/product/apps.py:8 csvt/product/models.py:133
+msgid "Products"
 msgstr ""
 
 #: csvt/product/models.py:13
@@ -225,10 +311,6 @@ msgstr ""
 msgid "Product"
 msgstr ""
 
-#: csvt/product/models.py:133
-msgid "Products"
-msgstr ""
-
 #: csvt/product/models.py:151
 msgid "Value"
 msgstr ""
@@ -240,3 +322,19 @@ msgstr ""
 #: csvt/product/models.py:159
 msgid "Product specifications"
 msgstr ""
+
+#: csvt/siteconf/apps.py:8
+msgid "Site settings"
+msgstr ""
+
+#~ msgid "Меню"
+#~ msgstr "Menu"
+
+#~ msgid "Страницы"
+#~ msgstr "Pages"
+
+#~ msgid "Продукты"
+#~ msgstr "Products"
+
+#~ msgid "Настройки сайта"
+#~ msgstr "Site settings"

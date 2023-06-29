@@ -1,6 +1,6 @@
-MENU_CLASSES = enumerate(('top', 'footer',))
+MENU_CLASSES = enumerate(("top", "footer",))
 
-ICON_CLASSES = enumerate(('top', 'footer',))
+ICON_CLASSES = enumerate(("top", "footer",))
 
 LAYER_CLASSES = (
 
@@ -33,7 +33,18 @@ PRODUCT_FLAGS = (
 
 
 MANAGER_PRICES = (
-    (0, '0'),
-    (1, '1'),
-    (2, '2'),
+    (0, "0"),
+    (1, "1"),
+    (2, "2"),
+)
+
+
+(STAFF, USER, BUYER, DESIGNER, PARTNER) = ("staff", "user", "buyer", "designer", "partner")
+
+USER_TYPES = (
+    (USER, "нет роли"),
+    (STAFF, "сотрудник"),
+    (BUYER, "покупатель"),
+    (DESIGNER, "дизайнер"),
+    (PARTNER, "партнёр"),
 )

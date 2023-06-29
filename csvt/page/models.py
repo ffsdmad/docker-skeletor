@@ -19,9 +19,25 @@ from constants import LAYER_CLASSES, PRODUCT_FLAGS
 class Page(TranslatableModel):
 
     translations = TranslatedFields(
-        name=models.CharField(max_length=50),
-        title=models.CharField(max_length=150, blank=True),
-        content=RichTextField(config_name="default", blank=True),
+        name=models.CharField(max_length=150),
+        title=models.CharField(max_length=250, blank=True),
+
+        content=RichTextField(
+            _('Content'), config_name="default", blank=True
+        ),
+
+        content_mobile=RichTextField(
+            _('Mobile content'), config_name="default", blank=True
+        ),
+
+        short_content=models.CharField(
+            _('Short content'), max_length=2048, null=True, blank=True
+        ),
+
+        external_video = models.CharField(
+            _('External video'), max_length=200, null=True, blank=True
+        ),
+
         seo_h1=models.CharField(max_length=90, blank=True),
         seo_h2=models.CharField(max_length=90, blank=True),
         seo_title=models.CharField(max_length=150, blank=True),
@@ -73,6 +89,9 @@ class Page(TranslatableModel):
         blank=True
     )
 
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
     def image_tag(self):
         if self.image:
             style = "width: 150px; height: 150px; object-fit: cover"
@@ -109,7 +128,7 @@ class Layer(TranslatableModel):
 
     page = models.ForeignKey(
         Page,
-        on_delete=models.CASCADE,
+        on_delete=models.DO_NOTHING,
         null=True, blank=True
     )
 
@@ -162,7 +181,7 @@ class ProductLayer(TranslatableModel):
 
     product = models.ForeignKey(
         "product.Product",
-        on_delete=models.CASCADE,
+        on_delete=models.DO_NOTHING,
         null=True, blank=True
     )
 

@@ -161,6 +161,7 @@ INSTALLED_APPS = [
     "page",
     "product",
     "siteconf",
+    "lk",
 ]
 
 # Языковые настройки
@@ -219,3 +220,6 @@ JSON_EDITOR_CSS = '/static/jsoneditor/jsoneditor.css'
 
 
 SITE_ID = 1
+
+# Собственная модель пользователя
+AUTH_USER_MODEL = 'lk.User'

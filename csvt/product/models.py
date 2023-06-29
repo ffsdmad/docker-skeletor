@@ -28,7 +28,7 @@ class Specifications(TranslatableModel):
         verbose_name_plural = _("Specifications")
 
     def __str__(self):
-        return self.label
+        return self.key
 
 
 class Product(TranslatableModel):
@@ -146,7 +146,7 @@ class Product(TranslatableModel):
 
 
 class ProductSpecifications(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
     specification = models.ForeignKey(Specifications, on_delete=models.CASCADE)
     value = models.CharField(_("Value"), max_length=100)
 

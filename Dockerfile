@@ -26,7 +26,7 @@ USER $USER
 # Set work directory
 WORKDIR $HOME
 
-COPY ./pyproject.toml poetry.lock gunicorn.conf.py startup-project.sh .
+COPY ./pyproject.toml poetry.lock gunicorn.conf.py startup-project.sh ./
 
 RUN poetry install
 
