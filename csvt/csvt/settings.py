@@ -162,6 +162,7 @@ INSTALLED_APPS = [
     "product",
     "siteconf",
     "lk",
+    "upload",
 ]
 
 # Языковые настройки
