@@ -15,8 +15,8 @@ from django.utils.translation import gettext_lazy as _
 
 env = environ.Env(
     ALLOWED_HOSTS=(list, ['0.0.0.0', ]),
-    MEDIA_URL=(str, "/MEDIA/"),
-    MEDIA_ROOT=(str, "MEDIA/"),
+    MEDIA_URL=(str, "/media/"),
+    MEDIA_ROOT=(str, "media/"),
     STATIC_URL=(str, "/static/"),
     STATIC_ROOT=(str, "static/"),
 )
@@ -62,10 +62,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'csvt.urls'
 
+TEMPLATES_DIR = BASE_DIR / 'templates'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["templates", ],
+        'DIRS': [TEMPLATES_DIR,],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -163,6 +165,7 @@ INSTALLED_APPS = [
     "siteconf",
     "lk",
     "upload",
+    "file",
 ]
 
 # Языковые настройки
@@ -192,7 +195,7 @@ PARLER_LANGUAGES = {
     }
 }
 
-ROSETTA_MESSAGES_PER_PAGE = 50
+ROSETTA_MESSAGES_PER_PAGE = 15
 ROSETTA_SHOW_AT_ADMIN_PANEL = True
 
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
@@ -224,3 +227,7 @@ SITE_ID = 1
 
 # Собственная модель пользователя
 AUTH_USER_MODEL = 'lk.User'
+
+# сюда загружать
+UPLOAD_PATH = MEDIA_ROOT # / "uploads"
+

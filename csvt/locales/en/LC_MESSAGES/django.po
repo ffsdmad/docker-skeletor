@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-29 16:18+0300\n"
+"POT-Creation-Date: 2023-07-04 15:04+0300\n"
 "PO-Revision-Date: 2023-06-29 09:02+0300\n"
 "Last-Translator:   <ffsdmad@yandex.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,13 +19,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.9\n"
 
-#: csvt/csvt/settings.py:169
+#: csvt/csvt/settings.py:171
 msgid "English"
 msgstr "English"
 
-#: csvt/csvt/settings.py:170
+#: csvt/csvt/settings.py:172
 msgid "Русский"
 msgstr "Russian"
+
+#: csvt/file/apps.py:7
+msgid "Files"
+msgstr ""
 
 #: csvt/lk/admin.py:20 csvt/page/admin.py:33
 msgid "Enable user"
@@ -71,7 +75,7 @@ msgstr ""
 msgid "Accepted rules"
 msgstr ""
 
-#: csvt/lk/models.py:53 csvt/page/admin.py:102 csvt/page/models.py:77
+#: csvt/lk/models.py:53 csvt/page/admin.py:104 csvt/page/models.py:77
 #: csvt/product/admin.py:104
 msgid "Attributes"
 msgstr ""
@@ -96,8 +100,8 @@ msgstr ""
 msgid "Menu"
 msgstr ""
 
-#: csvt/menu/models.py:30 csvt/page/models.py:70 csvt/page/models.py:132
-#: csvt/page/models.py:185 csvt/product/models.py:95 csvt/product/models.py:153
+#: csvt/menu/models.py:30 csvt/page/models.py:70 csvt/page/models.py:135
+#: csvt/page/models.py:188 csvt/product/models.py:95 csvt/product/models.py:153
 #: csvt/siteconf/models.py:16
 msgid "Published"
 msgstr "Published"
@@ -110,7 +114,7 @@ msgstr "Link"
 msgid "Comment"
 msgstr "Comment"
 
-#: csvt/menu/models.py:44 csvt/page/models.py:146 csvt/page/models.py:199
+#: csvt/menu/models.py:44 csvt/page/models.py:149 csvt/page/models.py:202
 msgid "CSS Class"
 msgstr ""
 
@@ -138,11 +142,12 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: csvt/page/admin.py:93 csvt/product/admin.py:111
+#: csvt/page/admin.py:95 csvt/product/admin.py:111 csvt/upload/models.py:31
+#: csvt/upload/models.py:32
 msgid "Images"
 msgstr ""
 
-#: csvt/page/apps.py:8 csvt/page/models.py:103
+#: csvt/page/apps.py:8 csvt/page/models.py:106
 msgid "Pages"
 msgstr ""
 
@@ -170,44 +175,44 @@ msgstr ""
 msgid "Template name"
 msgstr ""
 
-#: csvt/page/models.py:99 csvt/product/models.py:145
+#: csvt/page/models.py:102 csvt/product/models.py:145
 msgid "Image"
 msgstr ""
 
-#: csvt/page/models.py:102
+#: csvt/page/models.py:105
 msgid "Page"
 msgstr ""
 
-#: csvt/page/models.py:120 csvt/page/models.py:173
+#: csvt/page/models.py:123 csvt/page/models.py:176
 msgid "Group"
 msgstr ""
 
-#: csvt/page/models.py:135 csvt/page/models.py:188 csvt/product/models.py:23
+#: csvt/page/models.py:138 csvt/page/models.py:191 csvt/product/models.py:23
 #: csvt/product/models.py:155
 msgid "Order num"
 msgstr ""
 
-#: csvt/page/models.py:141 csvt/page/models.py:194
+#: csvt/page/models.py:144 csvt/page/models.py:197
 msgid "Language"
 msgstr ""
 
-#: csvt/page/models.py:161
+#: csvt/page/models.py:164
 msgid "Layer"
 msgstr ""
 
-#: csvt/page/models.py:162
+#: csvt/page/models.py:165
 msgid "Layers"
 msgstr ""
 
-#: csvt/page/models.py:218
+#: csvt/page/models.py:221
 msgid "Complex count"
 msgstr ""
 
-#: csvt/page/models.py:222
+#: csvt/page/models.py:225
 msgid "Product layer"
 msgstr ""
 
-#: csvt/page/models.py:223
+#: csvt/page/models.py:226
 msgid "Product layers"
 msgstr ""
 
@@ -325,6 +330,14 @@ msgstr ""
 
 #: csvt/siteconf/apps.py:8
 msgid "Site settings"
+msgstr ""
+
+#: csvt/upload/apps.py:8
+msgid "Uploads"
+msgstr ""
+
+#: csvt/upload/models.py:24
+msgid "Tags"
 msgstr ""
 
 #~ msgid "Меню"
