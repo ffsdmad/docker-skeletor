@@ -39,7 +39,6 @@ class ImageForm(TranslatableModelForm):
     def save(self, commit=True):
         instance = super().save(commit=commit)
         file = self.cleaned_data.get("file", None)
-        print(dir(file))
 
         extra_tags = self.cleaned_data.get("extra_tags", None)
         if extra_tags:
@@ -54,14 +53,17 @@ class ImageForm(TranslatableModelForm):
         super().__init__(*args, **kwargs)
         self.fields['tags'] = forms.MultipleChoiceField(
             choices=make_tags_choices(),
+            required=False,
             widget=SelectMultiple(attrs=dict(style="width: 40em; height: 20em"),)
         )
 
 
 class ImageAdmin(TranslatableAdmin):
 
-    list_display = ("alt", "name", "tags_str", "md5hash", "created_at")
+    list_display = ("alt", "thumb", "name", "tags_str", "md5hash", "created_at")
     list_filter = (MultiSelectFilter, )
+
+    search_fields = ("name", "tags")
 
     form = ImageForm
 

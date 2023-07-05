@@ -1,6 +1,7 @@
 import hashlib
 from django import forms
 from django.db import models
+from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 from django.contrib.postgres.fields import ArrayField
 
@@ -49,7 +50,7 @@ class Image(TranslatableModel):
 
     name = models.CharField(_("Name"), max_length=50)
 
-    md5hash = models.CharField(max_length=32, editable=False)
+    md5hash = models.CharField(max_length=32, editable=False, unique=True)
 
     #  ~ tags = ArrayField(
         #  ~ models.CharField(max_length=40, choices=TAG_UPLOADS),
@@ -92,3 +93,12 @@ class Image(TranslatableModel):
 
     def tags_str(self):
         return " / ".join({*self.tags})
+
+    def thumb(self):
+        cdn = (
+            "https://2mv652sbu3.a.trbcdn.net/"
+            "200x100_fit/"
+            "media/"
+        )
+        #  ~ return f"{cdn}{self.file}"
+        return mark_safe(f"<img src={cdn}{self.file} alt='self.alt' />")

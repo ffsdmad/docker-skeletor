@@ -16,6 +16,7 @@ services:
 
     volumes:
       - ./:${APP_HOME}/
+      - /home/ffsdmad/Projects/centrsvet/media:${APP_HOME}/media
       # ~ - ./${APP}:${APP_HOME}/${APP}
       # ~ - ./static:${APP_HOME}/static/
       # ~ - ./media:${APP_HOME}/media/
