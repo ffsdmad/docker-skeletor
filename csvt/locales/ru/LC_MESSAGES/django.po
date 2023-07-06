@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-04 15:04+0300\n"
-"PO-Revision-Date: 2023-07-04 15:04+0300\n"
+"POT-Creation-Date: 2023-07-06 16:02+0300\n"
+"PO-Revision-Date: 2023-07-06 16:04+0300\n"
 "Last-Translator: Илья Басманов <ffsdmad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,15 +19,15 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 "X-Translated-Using: django-rosetta 0.9.9\n"
 
-#: csvt/csvt/settings.py:171
+#: csvt/csvt/settings.py:173
 msgid "English"
 msgstr "Английский"
 
-#: csvt/csvt/settings.py:172
+#: csvt/csvt/settings.py:174
 msgid "Русский"
 msgstr "Русский"
 
-#: csvt/file/apps.py:7
+#: csvt/file/apps.py:7 csvt/upload/models.py:74
 msgid "Files"
 msgstr "Файлы"
 
@@ -142,8 +142,8 @@ msgstr "СЕО блок"
 msgid "Content"
 msgstr "Контент"
 
-#: csvt/page/admin.py:95 csvt/product/admin.py:111 csvt/upload/models.py:31
-#: csvt/upload/models.py:32
+#: csvt/page/admin.py:95 csvt/product/admin.py:111 csvt/upload/models.py:103
+#: csvt/upload/models.py:104
 msgid "Images"
 msgstr "Изображение"
 
@@ -224,7 +224,7 @@ msgstr "Цена"
 msgid "Products"
 msgstr "Продукты"
 
-#: csvt/product/models.py:13
+#: csvt/product/models.py:13 csvt/upload/models.py:83
 msgid "Name"
 msgstr "Название"
 
@@ -332,13 +332,37 @@ msgstr "Характеристики продукта"
 msgid "Site settings"
 msgstr "Настройки сайта"
 
+#: csvt/templates/admin/tags_filter.html:5
+#, fuzzy, python-format
+#| msgid " By %(filter_title)s XXXX "
+msgid " By %(filter_title)s "
+msgstr "Сортировать  %(filter_title)s сюда"
+
+#: csvt/templates/admin/tags_filter.html:10
+msgid "Выбрано"
+msgstr "Выбрано"
+
+#: csvt/templates/admin/tags_filter.html:23
+msgid "Доступно"
+msgstr "Доступно"
+
+#: csvt/templates/admin/tags_filter.html:36
+msgid "Поиск ..."
+msgstr "Поиск ..."
+
+#: csvt/upload/admin.py:20
+msgid "Tags"
+msgstr "Теги"
+
 #: csvt/upload/apps.py:8
 msgid "Uploads"
 msgstr "Загрузки"
 
-#: csvt/upload/models.py:24
-msgid "Tags"
-msgstr "Теги"
+#: csvt/upload/models.py:73
+#, fuzzy
+#| msgid "Files"
+msgid "File"
+msgstr "Файлы"
 
 #, fuzzy
 #~ msgid "Cmment"

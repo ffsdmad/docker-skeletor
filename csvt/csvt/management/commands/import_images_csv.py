@@ -5,7 +5,7 @@ from django.core.management.base import BaseCommand
 from django.core.files.base import File
 from django.db.utils import IntegrityError
 
-from upload.models import Image
+from upload.models import (Image, UploadFile)
 
 
 class Command(BaseCommand):
@@ -25,21 +25,21 @@ class Command(BaseCommand):
             tags = os.path.dirname(path).split('/')[1:]
             if not alt:
                 alt = name
-            try:
-                with open(f"media/{path}", "rb") as f:
-                    Image(alt=alt[:50], name=name[:50],
-                          file=path, tags=tags[:3]).save()
-            except IntegrityError as error:
-                #  ~ Image.objects.get()
-                #  ~ print(dir(error))
-                #  ~ print(error.args)
-                image = Image(
-                    alt=alt[:50], name=name[:50],
-                    file=path, tags=tags[:3]
-                )
-                orig = Image.objects.get(md5hash=image.calc_md5(image.file))
-                print(orig)
-                print(image)
-                return
-            except Exception as error:
-                print(error)
+
+                try:
+
+                    with open(f"media/{path}", "rb") as f:
+                        file = UploadFile(file=path)
+                        try:
+                            file = UploadFile.objects.get(md5hash=file.calc_md5(file.file))
+                        except UploadFile.DoesNotExist:
+                            file.save()
+
+                        if not Image.objects.filter(translations__alt=alt[:50], name=name[:50]).exists():
+                            Image(
+                                alt=alt[:50], name=name,
+                                file=file, tags=tags
+                            ).save()
+
+                except Exception as error:
+                    print(Exception, error)

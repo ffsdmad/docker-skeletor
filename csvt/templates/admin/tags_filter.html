@@ -1,0 +1,99 @@
+
+{% load i18n %}
+<details data-filter-title="{{ title }}" open>
+    <summary>
+        {% blocktranslate with filter_title=title %} By {{ filter_title }} {% endblocktranslate %}
+    </summary>
+
+    <form action="" class="tags-filter-form">
+
+        <strong>{% blocktranslate %}Выбрано{% endblocktranslate %}</strong>
+        <div class="tags-filter tags-selected">
+
+        {% for choice in choices %}
+        {% if choice.selected %}
+        <label>
+            <input value="{{ choice.display }}" name="tags" type="checkbox" checked />
+            <em>{{ choice.display }}</em>
+        </label>
+        {% endif %}
+        {% endfor %}
+        </div>
+
+        <strong>{% blocktranslate with filter_count=choices|length %}Доступно {{ filter_count }} {% endblocktranslate %}</strong>
+        <div class="tags-filter tags-available">
+
+        {% for choice in choices %}
+        {% if not choice.selected %}
+        <label>
+            <input value="{{ choice.display }}" type="checkbox"  />
+            <em>{{ choice.display }}</em>
+        </label>
+        {% endif %}
+        {% endfor %}
+        </div>
+
+        <input type="text" value="" id="tag-search" placeholder="{% trans 'Поиск ...' %}" />
+        <input type="submit" value="Найти" />
+    </form>
+</details>
+
+<script type="text/javascript">
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+        let tagSearch = document.getElementById("tag-search");
+
+        tagSearch.addEventListener("input", (event) => {
+            const filter = event.target.value;
+
+            document.querySelectorAll(".tags-available label").forEach(item => {
+                if(item.textContent.toUpperCase().includes(filter.toUpperCase())) {
+                    item.classList.remove("hide")
+                } else {
+                    item.classList.add("hide")
+                }
+            });
+
+        });
+
+        document.querySelectorAll(".tags-filter input").forEach((checkbox, index) => {
+            checkbox.parentNode.setAttribute("index", index)
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    checkbox.parentNode.parentNode.removeChild(checkbox.parentNode);
+                    checkbox.name = "tags";
+                    document.querySelector(".tags-selected").append(checkbox.parentNode)
+
+                } else {
+                    const index = parseInt(checkbox.parentNode.getAttribute("index"));
+
+                    checkbox.parentNode.parentNode.removeChild(checkbox.parentNode);
+                    checkbox.removeAttribute("name")
+
+                    const elem = document.querySelector(`.tags-available label[index='${index-1}']`)
+                    if(elem) {
+                        elem.insertAdjacentElement('afterend', checkbox.parentNode);
+                    } else {
+                        const elem = document.querySelector(`.tags-available label`)
+                        elem.insertAdjacentElement('beforebegin', checkbox.parentNode);
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+<style type="text/css">
+    .tags-filter {height: 30em; overflow: auto; margin-bottom: 1em}
+    .tags-filter.tags-selected {height: unset; max-height: 10em;}
+    .tags-filter-form > strong {margin-left: 1em; padding-bottom: 0.5em; display: block;}
+    .tags-filter-form label {display: block; padding: 1px 15px;}
+    .tags-filter-form label em{
+        display: inline-block;
+        max-width: calc(100% - 40px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .tags-filter-form label input {margin-right: 1em}
+    .tags-filter-form label.hide {display: none}
+</style>

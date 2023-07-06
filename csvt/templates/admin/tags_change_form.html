@@ -1,0 +1,44 @@
+{% extends 'admin/change_form.html' %}
+{% load static %}
+
+{% block admin_change_form_document_ready %}
+{{ block.super }}
+
+<input type="text" name="" id="tag-search" placeholder="Search tags..."  autocomplete="off" />
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function(event) {
+        let tagFields = document.getElementById("id_tags");
+        let tagSearch = document.getElementById("tag-search");
+
+
+
+
+        tagSearch?.addEventListener("input", (event) => {
+            const filter = event.target.value;
+
+            document.querySelectorAll("#id_tags option").forEach(item => {
+                if(item.value.toUpperCase().includes(filter.toUpperCase())) {
+                    item.removeAttribute('hidden');
+                } else {
+                    item.setAttribute('hidden', 'hidden');
+                }
+            });
+
+        });
+
+        if(tagFields) {
+            tagSearch.parentNode.removeChild(tagSearch);
+            tagFields.previousElementSibling.textContent = null;
+            tagFields.previousElementSibling.append(tagSearch)
+        }
+    });
+</script>
+
+<style type="text/css">
+    #tag-search {display: block; height: 2em}
+</style>
+
+{% endblock %}
+
+

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-04 15:04+0300\n"
-"PO-Revision-Date: 2023-06-29 09:02+0300\n"
-"Last-Translator:   <ffsdmad@yandex.ru>\n"
+"POT-Creation-Date: 2023-07-06 16:02+0300\n"
+"PO-Revision-Date: 2023-07-06 16:05+0300\n"
+"Last-Translator: Илья Басманов <ffsdmad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -19,15 +19,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.9\n"
 
-#: csvt/csvt/settings.py:171
+#: csvt/csvt/settings.py:173
 msgid "English"
 msgstr "English"
 
-#: csvt/csvt/settings.py:172
+#: csvt/csvt/settings.py:174
 msgid "Русский"
 msgstr "Russian"
 
-#: csvt/file/apps.py:7
+#: csvt/file/apps.py:7 csvt/upload/models.py:74
 msgid "Files"
 msgstr ""
 
@@ -101,8 +101,8 @@ msgid "Menu"
 msgstr ""
 
 #: csvt/menu/models.py:30 csvt/page/models.py:70 csvt/page/models.py:135
-#: csvt/page/models.py:188 csvt/product/models.py:95 csvt/product/models.py:153
-#: csvt/siteconf/models.py:16
+#: csvt/page/models.py:188 csvt/product/models.py:95
+#: csvt/product/models.py:153 csvt/siteconf/models.py:16
 msgid "Published"
 msgstr "Published"
 
@@ -124,11 +124,11 @@ msgstr ""
 
 #: csvt/page/admin.py:16
 msgid "Продуктовая страница"
-msgstr ""
+msgstr "Product  page"
 
 #: csvt/page/admin.py:17
 msgid "Продуктовые cтраницы"
-msgstr ""
+msgstr "Product Pages"
 
 #: csvt/page/admin.py:66 csvt/product/admin.py:80
 msgid "Main info"
@@ -142,8 +142,8 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: csvt/page/admin.py:95 csvt/product/admin.py:111 csvt/upload/models.py:31
-#: csvt/upload/models.py:32
+#: csvt/page/admin.py:95 csvt/product/admin.py:111 csvt/upload/models.py:103
+#: csvt/upload/models.py:104
 msgid "Images"
 msgstr ""
 
@@ -224,7 +224,7 @@ msgstr ""
 msgid "Products"
 msgstr ""
 
-#: csvt/product/models.py:13
+#: csvt/product/models.py:13 csvt/upload/models.py:83
 msgid "Name"
 msgstr ""
 
@@ -332,12 +332,33 @@ msgstr ""
 msgid "Site settings"
 msgstr ""
 
+#: csvt/templates/admin/tags_filter.html:5
+#, python-format
+msgid " By %(filter_title)s "
+msgstr ""
+
+#: csvt/templates/admin/tags_filter.html:10
+msgid "Выбрано"
+msgstr "Selected"
+
+#: csvt/templates/admin/tags_filter.html:23
+msgid "Доступно"
+msgstr "Available"
+
+#: csvt/templates/admin/tags_filter.html:36
+msgid "Поиск ..."
+msgstr "Search ..."
+
+#: csvt/upload/admin.py:20
+msgid "Tags"
+msgstr ""
+
 #: csvt/upload/apps.py:8
 msgid "Uploads"
 msgstr ""
 
-#: csvt/upload/models.py:24
-msgid "Tags"
+#: csvt/upload/models.py:73
+msgid "File"
 msgstr ""
 
 #~ msgid "Меню"

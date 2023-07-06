@@ -408,6 +408,16 @@ phonenumbers = ["phonenumbers (>=7.0.2)"]
 phonenumberslite = ["phonenumberslite (>=7.0.2)"]
 
 [[package]]
+name = "django-reverse-admin"
+version = "2.9.6"
+description = ""
+optional = false
+python-versions = ">=3"
+files = [
+    {file = "django_reverse_admin-2.9.6.zip", hash = "sha256:3c26d7a93181e8f11b1c81f83251f238c566bc7ebea2873520269c949116f0d9"},
+]
+
+[[package]]
 name = "django-rosetta"
 version = "0.9.9"
 description = "A Django application that eases the translation of Django projects"
@@ -1006,4 +1016,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "1ac3d3073e756e4307a65802adc4a7888ccd767f2821ea28d30335570e9d8944"
+content-hash = "7ccd38d32c11433639050a35056d1c710e85b8b35c04376665b005486f858a87"
