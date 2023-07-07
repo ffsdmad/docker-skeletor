@@ -1,7 +1,6 @@
 import os
 import hashlib
 import datetime
-from django import forms
 from django.db import models
 from django.db.models import Func, F
 from django.utils.safestring import mark_safe
@@ -62,6 +61,7 @@ class UploadFile(models.Model):
         upload_to=make_images_file_name,
         storage=DuplicateRemovableSystemStorage
     )
+
     md5hash = models.CharField(max_length=32, editable=False, unique=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
