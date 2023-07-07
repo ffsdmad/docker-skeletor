@@ -34,7 +34,7 @@ class Page(TranslatableModel):
             _('Short content'), max_length=2048, null=True, blank=True
         ),
 
-        external_video = models.CharField(
+        external_video=models.CharField(
             _('External video'), max_length=200, null=True, blank=True
         ),
 

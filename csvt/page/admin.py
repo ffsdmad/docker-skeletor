@@ -30,6 +30,7 @@ class ProductLayerInline(admin.TabularInline):
     raw_id_fields = ("group", "product")
     extra = 0
 
+
 @admin.action(description=_("Enable user"))
 def make_published(modeladmin, request, queryset):
     queryset.update(is_public=True)

@@ -1,5 +1,5 @@
-
 {% load i18n %}
+
 <details data-filter-title="{{ title }}" open>
     <summary>
         {% blocktranslate with filter_title=title %} By {{ filter_title }} {% endblocktranslate %}
@@ -58,7 +58,7 @@
 
         document.querySelectorAll(".tags-filter input").forEach((checkbox, index) => {
             checkbox.parentNode.setAttribute("index", index)
-            checkbox.addEventListener('change', function() {
+            checkbox.addEventListener("change", function() {
                 if (this.checked) {
                     checkbox.parentNode.parentNode.removeChild(checkbox.parentNode);
                     checkbox.name = "tags";
@@ -70,12 +70,12 @@
                     checkbox.parentNode.parentNode.removeChild(checkbox.parentNode);
                     checkbox.removeAttribute("name")
 
-                    const elem = document.querySelector(`.tags-available label[index='${index-1}']`)
+                    const elem = document.querySelector(`.tags-available label[index="${index-1}"]`)
                     if(elem) {
-                        elem.insertAdjacentElement('afterend', checkbox.parentNode);
+                        elem.insertAdjacentElement("afterend", checkbox.parentNode);
                     } else {
                         const elem = document.querySelector(`.tags-available label`)
-                        elem.insertAdjacentElement('beforebegin', checkbox.parentNode);
+                        elem.insertAdjacentElement("beforebegin", checkbox.parentNode);
                     }
                 }
             });
@@ -84,10 +84,14 @@
 </script>
 
 <style type="text/css">
-    .tags-filter {height: 30em; overflow: auto; margin-bottom: 1em}
+    .tags-filter {
+        height: 30em; overflow: auto; margin-bottom: 1em;
+        border: 1px solid #eee; padding: 5px 0;
+    }
     .tags-filter.tags-selected {height: unset; max-height: 10em;}
-    .tags-filter-form > strong {margin-left: 1em; padding-bottom: 0.5em; display: block;}
-    .tags-filter-form label {display: block; padding: 1px 15px;}
+    .tags-filter-form {margin-left: 1em;}
+    .tags-filter-form > strong {padding-bottom: 0.5em; display: block;}
+    .tags-filter-form label {display: block; padding: 0; }
     .tags-filter-form label em{
         display: inline-block;
         max-width: calc(100% - 40px);

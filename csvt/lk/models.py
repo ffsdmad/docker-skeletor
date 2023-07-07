@@ -9,7 +9,6 @@ from django.db.models import JSONField
 from constants import USER_TYPES, USER
 
 
-
 class User(AbstractUser):
 
     phone_num = models.CharField(_("Phone"), max_length=20)

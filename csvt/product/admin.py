@@ -5,8 +5,7 @@ from django.forms.models import BaseInlineFormSet
 
 from jsoneditor.forms import JSONEditor
 
-from parler.models import TranslatableModel, TranslatedFields
-from parler.admin import TranslatableAdmin, TranslatableInlineModelAdmin
+from parler.admin import TranslatableAdmin
 
 from .models import Product
 from .models import (Specifications, ProductSpecifications)
@@ -20,13 +19,12 @@ class ProductSpecificationsFormSet(BaseInlineFormSet):
             id__in=queryset.values("specification_id")
         )
 
-        kwargs['initial']  = [
+        kwargs['initial'] = [
             dict(specification=c, is_public=False)
             for c in query
         ]
 
         super().__init__(*args, queryset=queryset, instance=instance, **kwargs)
-
 
 
 class ProductSpecificationsInline(admin.StackedInline):
@@ -64,8 +62,6 @@ class ProductAdmin(TranslatableAdmin):
         },
     }
 
-    lighlight = ".required.translatable-field, .required.translatable-field + input"
-
     search_fields = (
         "slug",
         "translations__name",
@@ -95,7 +91,8 @@ class ProductAdmin(TranslatableAdmin):
                 "fields": (
                     ("price", "price_tax", "price_opt", "manager_price", ),
                     ("count_opt", "price_old", "price_one"),
-                    ("ostatok", "awaiting_supply", "srok_postavki", "garantee"),
+                    ("ostatok", "awaiting_supply",
+                        "srok_postavki", "garantee"),
                 )
             }
         ),
@@ -116,17 +113,11 @@ class ProductAdmin(TranslatableAdmin):
         ),
     )
 
-    #  ~ def get_form(self, request, obj=None, **kwargs):
-        #  ~ form = super().get_form(request, obj, **kwargs)
-        #  ~ for ft in self.model._parler_meta.get_translated_fields():
-            #  ~ form.base_fields[ft].widget.attrs['style'] = 'background-color: #ffffc7'
-            #  ~ form.base_fields[ft].widget.attrs['class'] = 'XXXXX'
-        #  ~ return form
-
     class Media:
         css = {
              'all': ('admin/parlet-form.css',)
         }
+
 
 class SpecificationsAdmin(TranslatableAdmin):
 
@@ -158,6 +149,7 @@ class SpecificationsAdmin(TranslatableAdmin):
         css = {
              'all': ('admin/parlet-form.css',)
         }
+
 
 admin.site.register(Specifications, SpecificationsAdmin)
 admin.site.register(Product, ProductAdmin)

@@ -7,7 +7,10 @@ from django.utils.translation import gettext_lazy as _
 
 
 class SiteConf(models.Model):
-    site = models.OneToOneField(Site, on_delete=models.CASCADE, primary_key=True)
+
+    site = models.OneToOneField(
+        Site, on_delete=models.CASCADE, primary_key=True
+    )
 
     title = models.CharField(max_length=150, blank=True)
     keywords = models.CharField(max_length=250, blank=True)

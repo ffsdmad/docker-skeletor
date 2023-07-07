@@ -1,18 +1,27 @@
-from django import forms
+
 from django.contrib import admin
-from django.forms.widgets import SelectMultiple
 from django.utils.translation import gettext_lazy as _
 
-from parler.admin import TranslatableAdmin
-from parler.forms import TranslatableModelForm
-from django_reverse_admin import ReverseModelAdmin
-
+from .forms import ImageForm
 from .models import make_tags_choices
 from .models import (Image, UploadFile)
 
 
-class CsvtSelectMultiple(SelectMultiple):
-    template_name = "forms/widgets/select.html"
+@admin.action(description=_("Remove CDN file"))
+def update_cdn_cache(modeladmin, request, queryset):
+    for obj in queryset:
+        print(obj.file.clean_cache())
+
+
+@admin.action(description=_("Show CDN file"))
+def show_cdn_url(modeladmin, request, queryset):
+    for obj in queryset:
+        print(obj.file.image())
+
+
+def delete_files(modeladmin, request, queryset):
+    for obj in queryset:
+        obj.delete()
 
 
 class MultiSelectFilter(admin.SimpleListFilter):
@@ -23,16 +32,6 @@ class MultiSelectFilter(admin.SimpleListFilter):
 
     template = "admin/tags_filter.html"
 
-    def __init__(self, request, params, model, model_admin):
-        #  ~ raise None
-        #  ~ if self.parameter_name in request.GET:
-
-            #  ~ value = request.GET.getlist("tags")
-            #  ~ params[self.parameter_name] = value
-
-        super().__init__(request, params, model, model_admin)
-
-
     def lookups(self, request, model_admin):
         return make_tags_choices()
 
@@ -41,7 +40,6 @@ class MultiSelectFilter(admin.SimpleListFilter):
         if values:
             return values.split('|')
         return []
-
 
     def choices(self, changelist):
 
@@ -55,7 +53,6 @@ class MultiSelectFilter(admin.SimpleListFilter):
                 "display": title,
             }
 
-
     def queryset(self, request, queryset):
 
         if self.value():
@@ -63,33 +60,6 @@ class MultiSelectFilter(admin.SimpleListFilter):
                 tags__overlap=self.value()
             )
         return queryset
-
-
-class ImageForm(TranslatableModelForm):
-
-    extra_tags = forms.CharField(required=False)
-
-    def save(self, commit=True):
-
-        instance = super().save(commit=commit)
-
-        extra_tags = self.cleaned_data.get("extra_tags", None)
-        if extra_tags:
-            tags = self.cleaned_data.get("tags", [])
-            tags = [*[s.strip() for s in extra_tags.split(",")], *tags]
-            instance.tags = tags
-            instance.save()
-        return instance
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields["tags"] = forms.MultipleChoiceField(
-            choices=make_tags_choices(),
-            required=False,
-            widget=SelectMultiple(
-                attrs=dict(style="width: 40em; height: 20em"),
-            )
-        )
 
 
 class ImageInline(admin.TabularInline):
@@ -100,29 +70,42 @@ class ImageInline(admin.TabularInline):
 class UploadFileAdmin(admin.ModelAdmin):
     inlines = (ImageInline,)
     list_display = ("thumb", "file", "md5hash", "links")
+    actions = (delete_files, )
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+#  ~ class ImageAdmin(TranslatableAdmin, ReverseModelAdmin):
+    #  ~ inline_type = "tabular"
+    #  ~ inline_reverse = ("file", )
 
 
-class ImageAdmin(TranslatableAdmin, ReverseModelAdmin):
-    inline_type = "tabular"
-    inline_reverse = ("file", )
+class ImageAdmin(admin.ModelAdmin):
+
     form = ImageForm
 
+    actions = (update_cdn_cache, show_cdn_url)
+
     list_display = ("alt", "thumb", "name", "tags_str", "created_at")
+    date_hierarchy = "created_at"
+
     list_filter = (
         MultiSelectFilter,
     )
 
-    search_fields = ("translations__alt", "name", "tags")
+    readonly_fields = ["name", "created_at"]
+
+    search_fields = ("alt", "name", "tags")
 
     def changelist_view(self, request, extra_context=None):
         if request.GET:
-            request.GET._mutable=True
+            request.GET._mutable = True
             try:
                 tags = "|".join(request.GET.getlist('tags'))
                 request.GET["tags"] = tags
             except KeyError as error:
                 print(error)
-            request.GET_mutable=False
+            request.GET_mutable = False
 
         return super().changelist_view(request, extra_context=extra_context)
 

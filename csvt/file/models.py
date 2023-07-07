@@ -1,12 +1,16 @@
 import datetime
 import os
-import random
 
 from django.db import models
 from django.utils.safestring import mark_safe
 
 from file.image.thumbs import ImageWithThumbsField
-from file.settings import MIMES, MIME_WORD, MIME_EXCEL, MIME_PDF, MIME_TXT, MIME_ZIP, CROP_PARAMS, CROP_MINI
+
+from file.settings import (
+    MIMES, MIME_WORD, MIME_EXCEL, MIME_PDF,
+    MIME_TXT, MIME_ZIP, CROP_PARAMS, CROP_MINI
+)
+
 from file.utils import make_upload_files_path, make_upload_images_path
 
 
@@ -51,7 +55,7 @@ class Image(models.Model):
         try:
             # Удаление файлов изображения и миниатюр с диска
             self.image.delete(save=True)
-        except:
+        except Exception:
             pass
         super(Image, self).delete(*args, **kwargs)
 
@@ -80,7 +84,11 @@ class File(models.Model):
     """
 
     title = models.CharField("Заголовок", blank=True, max_length=255)
-    file = models.FileField(verbose_name="Файл", upload_to=make_upload_files_path, max_length=255, blank=True, null=True)
+    file = models.FileField(
+        "Файл",
+        upload_to=make_upload_files_path,
+        max_length=255, blank=True, null=True
+    )
 
     mime = models.CharField("Mime", blank=True, max_length=255)
     ext = models.CharField("Тип", blank=True, max_length=50)
@@ -111,15 +119,15 @@ class File(models.Model):
             if not self.title:
                 self.title = self.file.name
 
-
-        if self.file.file and  hasattr(self.file.file, "content_type"):
+        if self.file.file and hasattr(self.file.file, "content_type"):
             self.mime = self.file.file.content_type
 
         if self.file.size:
             self.size = self.file.size
 
         if not self.title:
-            self.title = "%s" % datetime.datetime.now().strftime("%Y-%m-%d-%H-%M")
+            dt = datetime.datetime.now()
+            self.title = "%s" % dt.strftime("%Y-%m-%d-%H-%M")
 
         self.title = self.title[:255]
         super(File, self).save(*args, **kwargs)
@@ -127,7 +135,7 @@ class File(models.Model):
     def delete(self, *args, **kwargs):
         try:
             self.file.delete(save=True)  # Удаление файла
-        except:
+        except Exception:
             pass
         super(File, self).delete(*args, **kwargs)
 

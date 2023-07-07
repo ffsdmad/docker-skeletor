@@ -27,7 +27,12 @@ def make_upload_images_path(instance, filename, **kwargs):
     Создает путь для сохранения файлов изображений
     Имя файла - на основе текущей даты
     """
-    return make_upload_path(filename, date_filename, datetime.now(), folder="images")
+    return make_upload_path(
+        filename,
+        date_filename,
+        datetime.now(),
+        folder="images"
+    )
 
 
 def make_upload_files_path(instance, filename, **kwargs):
@@ -35,7 +40,12 @@ def make_upload_files_path(instance, filename, **kwargs):
     Создает путь для сохранения файлов изображений
     Имя файла - на основе текущей даты
     """
-    return make_upload_path(filename, slugify_filename, datetime.now(), folder="files")
+    return make_upload_path(
+        filename,
+        slugify_filename,
+        datetime.now(),
+        folder="files"
+    )
 
 
 ###########################################################################
@@ -58,13 +68,18 @@ def unique_filename(filename):
 
 
 def date_filename(filename, date_time):
-    if not isinstance(date_time, datetime): return None
+    if not isinstance(date_time, datetime):
+        return None
     fileName, fileExtension = os.path.splitext(filename)
     if not fileExtension:
         fileExtension = ".no"
-    return "%s%s" % (datetime.strftime(date_time, "%Y%m%d%H%M%S"), fileExtension)
+    return "%s%s" % (
+        datetime.strftime(date_time, "%Y%m%d%H%M%S"),
+        fileExtension
+    )
 
 ########################################################################
+
 
 def make_unique_path(instance, filename, **kwargs):
     """
@@ -120,11 +135,11 @@ def guid(*args):
     Generates a universally unique ID.
     Any arguments only create more randomness.
     """
-    t = long(time.time() * 1000)
-    r = long(random.random() * 100000000000000000)
+    t = time.time() * 1000
+    r = random.random() * 100000000000000000
     try:
         a = socket.gethostbyname(socket.gethostname())
-    except:
+    except Exception:
         # if we can"t get a network address, just imagine one
         a = random.random() * 100000000000000000
     data = str(t) + " " + str(r) + " " + str(a) + " " + str(args)
@@ -137,4 +152,3 @@ def iq_quote(string, encoding="utf-8"):
     """Перекодирует строку, затем квотирует (" "="%20"
     """
     return urllib.quote(string.encode(encoding))
-

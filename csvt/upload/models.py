@@ -1,16 +1,25 @@
+import os
 import hashlib
+import datetime
 from django import forms
 from django.db import models
 from django.db.models import Func, F
-from django.db.models import Count, Q
-from django.conf import settings
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 from django.contrib.postgres.fields import ArrayField
+from django.core.files.storage import FileSystemStorage
 
-from parler.models import TranslatableModel, TranslatedFields
+from csvt import clean_url_cache
 
-from constants import TAG_UPLOADS
+
+class DuplicateRemovableSystemStorage(FileSystemStorage):
+    def get_available_name(self, name, *args, **kwargs):
+        """
+        Удалить файл, если он существует
+        """
+        if os.path.exists(self.path(name)):
+            os.remove(self.path(name))
+        return name
 
 
 def make_tags_choices():
@@ -26,30 +35,33 @@ def make_tags_choices():
 
 
 class ChoiceArrayField(ArrayField):
-    """
-    A field that allows us to store an array of choices.
-
-    Uses Django 1.9's postgres ArrayField
-    and a MultipleChoiceField for its formfield.
-
-    Usage:
-
-        choices = ChoiceArrayField(models.CharField(max_length=..., choices=(...,)), default=[...])
-    """
 
     def formfield(self, **kwargs):
-        defaults = {
-            "form_class": forms.MultipleChoiceField,
-            "choices": make_tags_choices(),
-            #  ~ "widget": dict(attrs=dict(style="width: 200px"), is_required=False),
-        }
-        defaults.update(kwargs)
-        return super(ArrayField, self).formfield(**defaults)
+        return super(ArrayField, self).formfield(**kwargs)
+
+
+def make_images_file_name(instance, filename):
+    dt = datetime.datetime.now()
+    _name, _ext = os.path.splitext(filename)
+    _dir = os.path.join(
+        #  ~ settings.MEDIA_ROOT,
+        "uploads",
+        "images",
+        str(dt.year),
+        str(dt.month),
+        str(dt.day)
+    )
+    _name = "{}{}".format(instance.md5hash, _ext)
+    return os.path.join(_dir.lower(), _name.lower())
 
 
 class UploadFile(models.Model):
 
-    file = models.FileField(max_length=255)
+    file = models.FileField(
+        max_length=255,
+        upload_to=make_images_file_name,
+        storage=DuplicateRemovableSystemStorage
+    )
     md5hash = models.CharField(max_length=32, editable=False, unique=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -69,26 +81,46 @@ class UploadFile(models.Model):
     def links(self):
         return self.images.count()
 
+    def image(self):
+        if self.file:
+            cdn = (
+                "https://2mv652sbu3.a.trbcdn.net"
+                "/200x100_fit/"
+                "/media/"
+            )
+            return f"{cdn}{self.file}"
+
+    def clean_cache(self):
+        image_url = self.image()
+        image_url = image_url.replace("https:", "http:")
+        return clean_url_cache(image_url)
+
     def thumb(self):
-        cdn = (
-            "https://2mv652sbu3.a.trbcdn.net/"
-            "200x100_fit/"
-            "media/"
+        return mark_safe(
+            f"""<img width='200'
+            src='{self.image()}?V=2'
+            alt='{self.file}' />"""
         )
-        return mark_safe(f"<img src={cdn}{self.file} alt='self.file' />")
+
+    def delete(self, *args, **kwargs):
+        print("delete!!! "*5)
+        try:
+            self.file.delete(save=True)  # Удаление файла
+        except Exception as error:
+            print(error)
+        super().delete(*args, **kwargs)
 
     class Meta:
+        ordering = ("-pk", )
         verbose_name = _("File")
         verbose_name_plural = _("Files")
 
 
-class Image(TranslatableModel):
+class Image(models.Model):
 
-    translations = TranslatedFields(
-        alt=models.CharField(max_length=50)
-    )
+    alt = models.CharField(max_length=50, null=True)
 
-    name = models.CharField(_("Name"), max_length=50)
+    name = models.CharField(_("Name"), max_length=50, editable=False)
 
     file = models.ForeignKey(
         UploadFile,
@@ -108,9 +140,9 @@ class Image(TranslatableModel):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
+        ordering = ("-pk", )
         verbose_name = _("Images")
         verbose_name_plural = _("Images")
-
 
     def save(self, *args, **kwargs):
         if self.tags:
@@ -125,39 +157,3 @@ class Image(TranslatableModel):
 
     def thumb(self):
         return self.file.thumb()
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-#  ~ class Profile(models.Model):
-    #  ~ user = models.OneToOneField(settings.AUTH_USER_MODEL,
-        #  ~ on_delete=models.SET_NULL, null=True,
-    #  ~ )
-
-    #  ~ GENDER_CHOICES = (
-        #  ~ ('F', 'Female'),
-        #  ~ ('M', 'Male')
-        #  ~ )
-
-    #  ~ date_of_birth = models.DateField(blank=True, null=True)
-
-    #  ~ gender = models.CharField(max_length=1,
-        #  ~ default='F',
-        #  ~ blank=False,
-        #  ~ choices=GENDER_CHOICES
-        #  ~ )
-
-
-
-#  ~ class Photos(models.Model):
-    #  ~ user = models.ForeignKey(
-        #  ~ Profile,
-        #  ~ to_field='user',
-        #  ~ null=True,
-        #  ~ blank=True,
-        #  ~ on_delete=models.SET_NULL
-    #  ~ )
-    #  ~ photo = models.ImageField(
-        #  ~ upload_to='photos/%Y/%m/%d/',
-        #  ~ blank=True
-    #  ~ )

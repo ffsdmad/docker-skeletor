@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-06 16:02+0300\n"
-"PO-Revision-Date: 2023-07-06 16:04+0300\n"
+"POT-Creation-Date: 2023-07-07 16:47+0300\n"
+"PO-Revision-Date: 2023-07-07 16:48+0300\n"
 "Last-Translator: Илья Басманов <ffsdmad@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -27,7 +27,7 @@ msgstr "Английский"
 msgid "Русский"
 msgstr "Русский"
 
-#: csvt/file/apps.py:7 csvt/upload/models.py:74
+#: csvt/file/apps.py:7 csvt/upload/models.py:134
 msgid "Files"
 msgstr "Файлы"
 
@@ -142,8 +142,8 @@ msgstr "СЕО блок"
 msgid "Content"
 msgstr "Контент"
 
-#: csvt/page/admin.py:95 csvt/product/admin.py:111 csvt/upload/models.py:103
-#: csvt/upload/models.py:104
+#: csvt/page/admin.py:95 csvt/product/admin.py:111 csvt/upload/models.py:162
+#: csvt/upload/models.py:163
 msgid "Images"
 msgstr "Изображение"
 
@@ -224,7 +224,7 @@ msgstr "Цена"
 msgid "Products"
 msgstr "Продукты"
 
-#: csvt/product/models.py:13 csvt/upload/models.py:83
+#: csvt/product/models.py:13 csvt/upload/models.py:141
 msgid "Name"
 msgstr "Название"
 
@@ -332,6 +332,10 @@ msgstr "Характеристики продукта"
 msgid "Site settings"
 msgstr "Настройки сайта"
 
+#: csvt/templates/admin/tags_change_form.html:8
+msgid "Search tags..."
+msgstr "Поиск тегов..."
+
 #: csvt/templates/admin/tags_filter.html:5
 #, fuzzy, python-format
 #| msgid " By %(filter_title)s XXXX "
@@ -343,14 +347,24 @@ msgid "Выбрано"
 msgstr "Выбрано"
 
 #: csvt/templates/admin/tags_filter.html:23
-msgid "Доступно"
+#, fuzzy, python-format
+#| msgid "Доступно"
+msgid "Доступно %(filter_count)s "
 msgstr "Доступно"
 
 #: csvt/templates/admin/tags_filter.html:36
 msgid "Поиск ..."
 msgstr "Поиск ..."
 
-#: csvt/upload/admin.py:20
+#: csvt/upload/admin.py:15
+msgid "Remove CDN file"
+msgstr "Удалить файлы из CDN"
+
+#: csvt/upload/admin.py:22
+msgid "Show CDN file"
+msgstr "Отобразить в логах ссылки на CDN файл"
+
+#: csvt/upload/admin.py:36
 msgid "Tags"
 msgstr "Теги"
 
@@ -358,7 +372,7 @@ msgstr "Теги"
 msgid "Uploads"
 msgstr "Загрузки"
 
-#: csvt/upload/models.py:73
+#: csvt/upload/models.py:133
 #, fuzzy
 #| msgid "Files"
 msgid "File"

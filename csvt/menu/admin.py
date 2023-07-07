@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.contrib.sites.shortcuts import get_current_site
+#  ~ from django.contrib.sites.shortcuts import get_current_site
 
 from mptt.admin import MPTTModelAdmin
 from mptt.forms import MPTTAdminForm

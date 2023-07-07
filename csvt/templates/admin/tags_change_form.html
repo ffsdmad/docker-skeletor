@@ -1,27 +1,25 @@
-{% extends 'admin/change_form.html' %}
+{% extends "admin/change_form.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block admin_change_form_document_ready %}
 {{ block.super }}
 
-<input type="text" name="" id="tag-search" placeholder="Search tags..."  autocomplete="off" />
+<input type="text" name="" id="tag-search" placeholder="{% trans 'Search tags...' %}"  autocomplete="off" />
 
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function(event) {
         let tagFields = document.getElementById("id_tags");
         let tagSearch = document.getElementById("tag-search");
 
-
-
-
         tagSearch?.addEventListener("input", (event) => {
             const filter = event.target.value;
 
             document.querySelectorAll("#id_tags option").forEach(item => {
                 if(item.value.toUpperCase().includes(filter.toUpperCase())) {
-                    item.removeAttribute('hidden');
+                    item.removeAttribute("hidden");
                 } else {
-                    item.setAttribute('hidden', 'hidden');
+                    item.setAttribute("hidden", "hidden");
                 }
             });
 
@@ -37,6 +35,9 @@
 
 <style type="text/css">
     #tag-search {display: block; height: 2em}
+    .aligned label {
+        width: 200px;
+    }
 </style>
 
 {% endblock %}

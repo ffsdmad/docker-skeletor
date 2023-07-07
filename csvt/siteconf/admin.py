@@ -11,7 +11,9 @@ class SiteConfInline(admin.StackedInline):
     model = SiteConf
 
     fieldsets = (
-        (None, {"fields": (
+        (
+            None, {
+                "fields": (
                     "title", "keywords",
                     "description",
                     "template_name",
@@ -34,10 +36,11 @@ class SiteAdmin(admin.ModelAdmin):
 
     search_fields = ("name", "domain",)
 
+    @admin.action(
+        description=SiteConf._meta.get_field('is_public').verbose_name
+    )
     def get_is_public(self, obj):
         return obj.siteconf.is_public
-
-    get_is_public.short_description = SiteConf._meta.get_field('is_public').verbose_name
 
     class Media:
         css = {

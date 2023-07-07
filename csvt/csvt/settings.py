@@ -67,7 +67,7 @@ TEMPLATES_DIR = BASE_DIR / 'templates'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR,],
+        'DIRS': [TEMPLATES_DIR, ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -178,16 +178,16 @@ PARLER_DEFAULT_LANGUAGE_CODE = 'ru'
 
 PARLER_LANGUAGES = {
     None: (
-        {'code': 'en',},
-        {'code': 'ru',},
+        {'code': 'en', },
+        {'code': 'ru', },
     ),
     1: (
-        {'code': 'en',},
-        {'code': 'ru',},
+        {'code': 'en', },
+        {'code': 'ru', },
     ),
     2: (
-        {'code': 'en',},
-        {'code': 'ru',},
+        {'code': 'en', },
+        {'code': 'ru', },
     ),
     'default': {
         'fallbacks': ['ru'],          # defaults to PARLER_DEFAULT_LANGUAGE_CODE
@@ -207,8 +207,12 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'Custom',
         'toolbar_Custom': [
             ['Bold', 'Italic', 'Underline'],
-            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-',
-                'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            [
+                'NumberedList', 'BulletedList', '-',
+                'Outdent', 'Indent', '-',
+                'JustifyLeft', 'JustifyCenter',
+                'JustifyRight', 'JustifyBlock'
+            ],
             ['Link', 'Unlink'],
             ['RemoveFormat', 'Source']
         ]
@@ -229,5 +233,16 @@ SITE_ID = 1
 AUTH_USER_MODEL = 'lk.User'
 
 # сюда загружать
-UPLOAD_PATH = MEDIA_ROOT # / "uploads"
+UPLOAD_PATH = MEDIA_ROOT  # / "uploads"
 
+
+# Авторизация на CDN
+CDN_USERNAME = "ffsdmad@yandex.ru"
+CDN_PASSWORD = "cdnV2022"
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": "/var/tmp/django_cache",
+    }
+}

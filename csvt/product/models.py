@@ -1,6 +1,8 @@
 from django.db import models
 from django.db.models import JSONField
 from django.utils.translation import gettext_lazy as _
+from django.utils.html import mark_safe
+
 
 from parler.models import TranslatableModel, TranslatedFields
 
@@ -10,9 +12,9 @@ from constants import (SUBPRODUCT_TYPES, MANAGER_PRICES)
 class Specifications(TranslatableModel):
 
     translations = TranslatedFields(
-        name = models.CharField(_("Name"), max_length=100),
-        label = models.CharField(_("Label"), max_length=100, blank=True),
-        unit = models.CharField(_("Unit"), max_length=40, blank=True),
+        name=models.CharField(_("Name"), max_length=100),
+        label=models.CharField(_("Label"), max_length=100, blank=True),
+        unit=models.CharField(_("Unit"), max_length=40, blank=True),
     )
 
     key = models.CharField(_("Key"), max_length=40, blank=True)
@@ -58,11 +60,11 @@ class Product(TranslatableModel):
             _("price_tax"), null=True, blank=True
         ),
 
-        price_old = models.PositiveIntegerField(
+        price_old=models.PositiveIntegerField(
             null=True, blank=True
         ),
 
-        price_one = models.PositiveIntegerField(
+        price_one=models.PositiveIntegerField(
             null=True, blank=True
         )
     )

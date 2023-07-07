@@ -71,7 +71,6 @@ class Menu(MPTTModel, TranslatableModel):
 
     def __str__(self):
         return self.comment
-        #  ~ return self.safe_translation_getter("name", any_language=True) or self.link
 
     def save(self, *args, **kwargs):
 

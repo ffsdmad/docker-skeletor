@@ -26,7 +26,6 @@ django-multiselectfield = "^0.1.12"
 django-jsoneditor-widget = "^1.3.2"
 jedi = "^0.18.2"
 pytils = "^0.4.1"
-django-reverse-admin = "^2.9.6"
 
 
 [build-system]
