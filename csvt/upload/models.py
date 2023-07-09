@@ -2,7 +2,7 @@ import os
 import hashlib
 import datetime
 from django.db import models
-from django.db.models import Func, F
+from django.db.models import Func, F, Count
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 from django.contrib.postgres.fields import ArrayField
@@ -22,7 +22,10 @@ class DuplicateRemovableSystemStorage(FileSystemStorage):
 
 
 def make_tags_choices():
-
+#    query = Image.objects.values(
+#        tag=Func(F("tags"), function="unnest", distinct=True)
+#    )
+#    query = query.annotate(total=Count(1)).order_by("-total")
     query = Image.objects.annotate(
         tag=Func(F("tags"), function="unnest"),
     )
