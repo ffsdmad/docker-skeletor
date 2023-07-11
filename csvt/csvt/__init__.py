@@ -15,47 +15,40 @@ def add_short_description(short_description: str):
     return decorator
 
 
-def get_cdn_token(key="cdn-token"):
-    token = cache.get(key)
-    if not token:
-        resp = requests.post(
-            "https://api.cdnvideo.ru/app/oauth/v1/token/",
-            data=dict(
-                username=settings.CDN_USERNAME,
-                password=settings.CDN_PASSWORD
+def get_cdn_token(api_cdn_fun):
+    def _get_cdn_token(target_url, key="cdn-token"):
+        token = cache.get(key)
+        if not token and settings.CDN_USERNAME:
+            resp = requests.post(
+                "https://api.cdnvideo.ru/app/oauth/v1/token/",
+                data=dict(
+                    username=settings.CDN_USERNAME,
+                    password=settings.CDN_PASSWORD
+                )
             )
+            if resp.status_code == 200:
+                data = resp.json()
+                token = data["token"]
+                lifetime = data["lifetime"]
+                cache.set(key, token, lifetime))
+        return api_cdn_fun(target_url, token)
+    return _get_cdn_token
+
+
+@get_cdn_token
+def clean_url_cache(target_url, token):
+    if token:
+        headers = {'CDN-AUTH-TOKEN': get_cdn_token()}
+        url = (
+            "https://api.cdnvideo.ru/"
+            "app/cache/v2/objects?"
+            "cdn_url={}"
+        ).format(target_url)
+
+        resp = requests.delete(
+            url,
+            headers=headers,
         )
-        if resp.status_code == 200:
-            data = resp.json()
-            token = data["token"]
-            lifetime = data["lifetime"]
-            cache.set(key, token, lifetime)
-    return token
 
-
-def clean_url_cache(target_url):
-    headers = {'CDN-AUTH-TOKEN': get_cdn_token()}
-    url = (
-        "https://api.cdnvideo.ru/"
-        "app/cache/v2/objects?"
-        "cdn_url={}"
-    ).format(target_url)
-
-    resp = requests.delete(
-        url,
-        headers=headers,
-    )
-
-    task_id = resp.json()["task_id"]
-    print("""curl -X DELETE -H "CDN-AUTH-TOKEN: {}" '{}'""".format(
-            headers["CDN-AUTH-TOKEN"],
-            url
-        )
-    )
-    print("""curl -X GET -H "CDN-AUTH-TOKEN: {}" '{}'""".format(
-            headers["CDN-AUTH-TOKEN"],
-            "https://api.cdnvideo.ru/app/cache/v2/tasks?id={}".format(task_id)
-        )
-    )
-    print(resp.json())
-    return task_id if resp.status_code == 200 else None
+        task_id = resp.json()["task_id"]
+        return task_id if resp.status_code == 200 else None

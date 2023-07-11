@@ -21,10 +21,11 @@ env = environ.Env(
     STATIC_ROOT=(str, "static/"),
     CDN_DOMAIN=(str, None),
     CDN_USERNAME=(str, None),
-)   CDN_PASSWORD=(str, None),
+    CDN_PASSWORD=(str, None),
+)
 
 # Bu# Хост CDNild paths inside the project like this: BASE_DIR / 'subdir'.
-BASECDN_DOMAIN = _DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -240,7 +241,7 @@ UPLOAD_PATH = MEDIA_ROOT  # / "uploads"
 
 # Авторизация на CDN
 CDN_USERNAME = env("CDN_USERNAME")
-CDN_PASSWORD = env("CDN_USERNAME")
+CDN_PASSWORD = env("CDN_PASSWORD")
 
 # Хост CDN
 CDN_DOMAIN = env("CDN_DOMAIN")

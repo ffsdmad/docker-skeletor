@@ -2,6 +2,7 @@ import os
 import hashlib
 import datetime
 from django.db import models
+from django.conf import settings
 from django.db.models import Func, F, Count
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
@@ -86,10 +87,10 @@ class UploadFile(models.Model):
 
     def image(self):
         if self.file:
-            cdn = (
-                "https://2mv652sbu3.a.trbcdn.net"
-                "/200x100_fit/"
-                "/media/"
+            cdn = "".join(
+                (settings.CDN_DOMAIN,
+                "/200x100_fit/",
+                "/media/",)
             )
             return f"{cdn}{self.file}"
 
