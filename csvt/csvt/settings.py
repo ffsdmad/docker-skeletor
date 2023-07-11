@@ -19,10 +19,12 @@ env = environ.Env(
     MEDIA_ROOT=(str, "media/"),
     STATIC_URL=(str, "/static/"),
     STATIC_ROOT=(str, "static/"),
-)
+    CDN_DOMAIN=(str, None),
+    CDN_USERNAME=(str, None),
+)   CDN_PASSWORD=(str, None),
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# Bu# Хост CDNild paths inside the project like this: BASE_DIR / 'subdir'.
+BASECDN_DOMAIN = _DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
