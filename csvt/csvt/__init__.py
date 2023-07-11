@@ -30,7 +30,7 @@ def get_cdn_token(api_cdn_fun):
                 data = resp.json()
                 token = data["token"]
                 lifetime = data["lifetime"]
-                cache.set(key, token, lifetime))
+                cache.set(key, token, lifetime)
         return api_cdn_fun(target_url, token)
     return _get_cdn_token
 
