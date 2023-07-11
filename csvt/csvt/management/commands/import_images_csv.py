@@ -31,11 +31,12 @@ class Command(BaseCommand):
                     with open(f"media/{path}", "rb") as f:
                         file = UploadFile(file=path)
                         try:
-                            file = UploadFile.objects.get(md5hash=file.calc_md5(file.file))
+                            file = UploadFile.objects.get(
+                                md5hash=file.calc_md5(file.file))
                         except UploadFile.DoesNotExist:
                             file.save()
 
-                        if not Image.objects.filter(translations__alt=alt[:50], name=name[:50]).exists():
+                        if not Image.objects.filter(alt=alt[:50], name=name[:50]).exists():
                             Image(
                                 alt=alt[:50], name=name,
                                 file=file, tags=tags
