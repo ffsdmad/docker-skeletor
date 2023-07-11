@@ -237,8 +237,15 @@ UPLOAD_PATH = MEDIA_ROOT  # / "uploads"
 
 
 # Авторизация на CDN
-CDN_USERNAME = "ffsdmad@yandex.ru"
-CDN_PASSWORD = "cdnV2022"
+CDN_USERNAME = env("CDN_USERNAME")
+CDN_PASSWORD = env("CDN_USERNAME")
+
+# Хост CDN
+CDN_DOMAIN = env("CDN_DOMAIN")
+
+# подмена MEDIA на CDN
+if CDN_DOMAIN:
+    MEDIA_URL = CDN_DOMAIN
 
 CACHES = {
     "default": {

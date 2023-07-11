@@ -18,4 +18,14 @@ echo DEBUG=True >> .env
 echo ALLOWED_HOSTS=0.0.0.0 >> .env
 echo CSRF_TRUSTED_ORIGINS=http://0.0.0.0:$PORT >> .env
 
+echo Введите CDN_DOMAIN
+read CDN_DOMAIN
+echo CDN_DOMAIN=$CDN_DOMAIN >>.env
 
+echo Введите CDN_USERNAME
+read CDN_USERNAME
+echo CDN_USERNAME=$CDN_USERNAME >>.env
+
+echo Введите CDN_PASSWORD
+CDN_PASSWORD
+echo CDN_PASSWORD=$CDN_PASSWORD >>.env
